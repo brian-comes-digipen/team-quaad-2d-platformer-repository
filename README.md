@@ -28,4 +28,5 @@ Producer: Zach
 Game Design Lead: Hugo  
 Art Lead: ???  
 Tech Lead: Brain  
+Programmer: Hunter  
 Sound Lead: Henry  
