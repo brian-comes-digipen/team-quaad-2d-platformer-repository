@@ -1,6 +1,6 @@
-BSD 3-Clause License
+# BSD 3-Clause License
 
-Copyright (c) 2020, digipen team chad (wanic)
+Copyright (c) 2020, digipen team qaad (wanic)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
