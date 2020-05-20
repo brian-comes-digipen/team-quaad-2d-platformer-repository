@@ -25,6 +25,7 @@ uniform float		_BumpFace;					// v[ 0, 1]
 uniform samplerCUBE	_Cube;						// Cube / sphere map
 uniform fixed4 		_ReflectFaceColor;			// RGB intensity
 uniform fixed4		_ReflectOutlineColor;
+
 //uniform float		_EnvTiltX;					// v[-1, 1]
 //uniform float		_EnvTiltY;					// v[-1, 1]
 uniform float3      _EnvMatrixRotation;
@@ -66,6 +67,7 @@ uniform float		_MaskID;
 uniform sampler2D	_MaskTex;
 uniform float4		_MaskCoord;
 uniform float4		_ClipRect;	// bottom left(x,y) : top right(z,w)
+
 //uniform float		_MaskWipeControl;
 //uniform float		_MaskEdgeSoftness;
 //uniform fixed4		_MaskEdgeColor;
