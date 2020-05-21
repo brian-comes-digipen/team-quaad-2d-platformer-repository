@@ -1,0 +1,1858 @@
+fileFormatVersion: 2
+guid: c0097d95660838348ad55faf290e63b5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8597857273004268711
+    second: newdevtiles_nobackground_0
+  - first:
+      213: -7978003143323208475
+    second: newdevtiles_nobackground_1
+  - first:
+      213: 7885499654563559142
+    second: newdevtiles_nobackground_2
+  - first:
+      213: 5650272819021199902
+    second: newdevtiles_nobackground_3
+  - first:
+      213: 5074968122126289614
+    second: newdevtiles_nobackground_4
+  - first:
+      213: -8289278706075221154
+    second: newdevtiles_nobackground_5
+  - first:
+      213: 1768369422244530426
+    second: newdevtiles_nobackground_6
+  - first:
+      213: 596903248181757685
+    second: newdevtiles_nobackground_7
+  - first:
+      213: 7364077831989672346
+    second: newdevtiles_nobackground_8
+  - first:
+      213: 4157432879023706069
+    second: newdevtiles_nobackground_9
+  - first:
+      213: -2551094573939989263
+    second: newdevtiles_nobackground_10
+  - first:
+      213: 3802876008155919828
+    second: newdevtiles_nobackground_11
+  - first:
+      213: -373936058315825077
+    second: newdevtiles_nobackground_12
+  - first:
+      213: -6901954349269047749
+    second: newdevtiles_nobackground_13
+  - first:
+      213: -1933339203672091310
+    second: newdevtiles_nobackground_14
+  - first:
+      213: -2790222920585836504
+    second: newdevtiles_nobackground_15
+  - first:
+      213: -1121736803507320860
+    second: newdevtiles_nobackground_16
+  - first:
+      213: -2529148928921378122
+    second: newdevtiles_nobackground_17
+  - first:
+      213: 9133669415247308768
+    second: newdevtiles_nobackground_18
+  - first:
+      213: -4190654774996848926
+    second: newdevtiles_nobackground_19
+  - first:
+      213: -3040841565881793093
+    second: newdevtiles_nobackground_20
+  - first:
+      213: -4812842737695928844
+    second: newdevtiles_nobackground_21
+  - first:
+      213: -3463126582565714877
+    second: newdevtiles_nobackground_22
+  - first:
+      213: 2825327741101480580
+    second: newdevtiles_nobackground_23
+  - first:
+      213: 7005630942510015927
+    second: newdevtiles_nobackground_24
+  - first:
+      213: 4647398514774764175
+    second: newdevtiles_nobackground_25
+  - first:
+      213: -5025897195364369706
+    second: newdevtiles_nobackground_26
+  - first:
+      213: -2338945045872367356
+    second: newdevtiles_nobackground_27
+  - first:
+      213: 7223017905388747830
+    second: newdevtiles_nobackground_28
+  - first:
+      213: 4447640432546650932
+    second: newdevtiles_nobackground_29
+  - first:
+      213: 3196791645175350626
+    second: newdevtiles_nobackground_30
+  - first:
+      213: -4793449782156114152
+    second: newdevtiles_nobackground_31
+  - first:
+      213: -2745422584679657314
+    second: newdevtiles_nobackground_32
+  - first:
+      213: -6706724177546468878
+    second: newdevtiles_nobackground_33
+  - first:
+      213: 2924894080319370177
+    second: newdevtiles_nobackground_34
+  - first:
+      213: 8033110629693608762
+    second: newdevtiles_nobackground_35
+  - first:
+      213: 6381350069497767544
+    second: newdevtiles_nobackground_36
+  - first:
+      213: 8857003692365731354
+    second: newdevtiles_nobackground_37
+  - first:
+      213: 2709879586712222537
+    second: newdevtiles_nobackground_38
+  - first:
+      213: -7955234343758158659
+    second: newdevtiles_nobackground_39
+  - first:
+      213: -4235122443456844855
+    second: newdevtiles_nobackground_40
+  - first:
+      213: 6293044816868575948
+    second: newdevtiles_nobackground_41
+  - first:
+      213: 8487693494881784671
+    second: newdevtiles_nobackground_42
+  - first:
+      213: -4378089384206093619
+    second: newdevtiles_nobackground_43
+  - first:
+      213: -1459413677775279474
+    second: newdevtiles_nobackground_44
+  - first:
+      213: -5632023760489711978
+    second: newdevtiles_nobackground_45
+  - first:
+      213: 7976626699352832315
+    second: newdevtiles_nobackground_46
+  - first:
+      213: -1650478710365054037
+    second: newdevtiles_nobackground_47
+  - first:
+      213: 8331416973735085640
+    second: newdevtiles_nobackground_48
+  - first:
+      213: 8975535602823057720
+    second: newdevtiles_nobackground_49
+  - first:
+      213: 6775502564329525218
+    second: newdevtiles_nobackground_50
+  - first:
+      213: 9219056749402833700
+    second: newdevtiles_nobackground_51
+  - first:
+      213: 6063112029081909905
+    second: newdevtiles_nobackground_52
+  - first:
+      213: 6014957957092114623
+    second: newdevtiles_nobackground_53
+  - first:
+      213: -5714550552669440420
+    second: newdevtiles_nobackground_54
+  - first:
+      213: 5438127486891122492
+    second: newdevtiles_nobackground_55
+  - first:
+      213: 8097124422362784201
+    second: newdevtiles_nobackground_56
+  - first:
+      213: -4540901768766871599
+    second: newdevtiles_nobackground_57
+  - first:
+      213: 3649398123137404103
+    second: newdevtiles_nobackground_58
+  - first:
+      213: 4754253578570894907
+    second: newdevtiles_nobackground_59
+  - first:
+      213: -2117677863919626259
+    second: newdevtiles_nobackground_60
+  - first:
+      213: -6227354277637161306
+    second: newdevtiles_nobackground_61
+  - first:
+      213: -3359339128412125513
+    second: newdevtiles_nobackground_62
+  - first:
+      213: -7545429401724623429
+    second: newdevtiles_nobackground_63
+  - first:
+      213: -3897258732209261406
+    second: newdevtiles_nobackground_64
+  - first:
+      213: -7393579704647762316
+    second: newdevtiles_nobackground_0
+  - first:
+      213: 6892284033485901224
+    second: newdevtiles_nobackground_1
+  - first:
+      213: 4168267536252316900
+    second: newdevtiles_nobackground_2
+  - first:
+      213: 309392298370432222
+    second: newdevtiles_nobackground_3
+  - first:
+      213: -8199195916798380489
+    second: newdevtiles_nobackground_4
+  - first:
+      213: -5692543146565341540
+    second: newdevtiles_nobackground_5
+  - first:
+      213: 7763896661398919251
+    second: newdevtiles_nobackground_6
+  - first:
+      213: -5024135843844967537
+    second: newdevtiles_nobackground_7
+  - first:
+      213: -4828592157499406590
+    second: newdevtiles_nobackground_8
+  - first:
+      213: -5222338771456799943
+    second: newdevtiles_nobackground_9
+  - first:
+      213: 4572683234669529614
+    second: newdevtiles_nobackground_10
+  - first:
+      213: -3125127212460873936
+    second: newdevtiles_nobackground_11
+  - first:
+      213: 9059199529206836564
+    second: newdevtiles_nobackground_12
+  - first:
+      213: 3964868956146115727
+    second: newdevtiles_nobackground_13
+  - first:
+      213: -4051391450604147273
+    second: newdevtiles_nobackground_14
+  - first:
+      213: -3060449183343166715
+    second: newdevtiles_nobackground_15
+  - first:
+      213: 1646087768460432302
+    second: newdevtiles_nobackground_16
+  - first:
+      213: 1613537357076669786
+    second: newdevtiles_nobackground_17
+  - first:
+      213: -7579609607409471024
+    second: newdevtiles_nobackground_18
+  - first:
+      213: -6304982713196992142
+    second: newdevtiles_nobackground_19
+  - first:
+      213: 4589522236165525349
+    second: newdevtiles_nobackground_20
+  - first:
+      213: -2779425989570694123
+    second: newdevtiles_nobackground_21
+  - first:
+      213: 2421881527113921562
+    second: newdevtiles_nobackground_22
+  - first:
+      213: 5793658519635376125
+    second: newdevtiles_nobackground_23
+  - first:
+      213: -7533554607445655712
+    second: newdevtiles_nobackground_24
+  - first:
+      213: -6687460287364125720
+    second: newdevtiles_nobackground_25
+  - first:
+      213: 8194138150838885458
+    second: newdevtiles_nobackground_26
+  - first:
+      213: 6844926233896787752
+    second: newdevtiles_nobackground_27
+  - first:
+      213: -8017192932833752707
+    second: newdevtiles_nobackground_28
+  - first:
+      213: -4908196117851669432
+    second: newdevtiles_nobackground_29
+  - first:
+      213: -1027344739674556327
+    second: newdevtiles_nobackground_30
+  - first:
+      213: 2458499650422422095
+    second: newdevtiles_nobackground_31
+  - first:
+      213: 5578431275013072988
+    second: newdevtiles_nobackground_32
+  - first:
+      213: -1046667093737697609
+    second: newdevtiles_nobackground_33
+  - first:
+      213: -3765727548470699442
+    second: newdevtiles_nobackground_34
+  - first:
+      213: -7431488257736041347
+    second: newdevtiles_nobackground_35
+  - first:
+      213: 8735960942763113626
+    second: newdevtiles_nobackground_36
+  - first:
+      213: 8969313904106876049
+    second: newdevtiles_nobackground_37
+  - first:
+      213: 4660832306400893040
+    second: newdevtiles_nobackground_38
+  - first:
+      213: -6427099611440292389
+    second: newdevtiles_nobackground_39
+  - first:
+      213: 275594425480039145
+    second: newdevtiles_nobackground_40
+  - first:
+      213: 313763027289076009
+    second: newdevtiles_nobackground_41
+  - first:
+      213: -4897679977064695817
+    second: newdevtiles_nobackground_42
+  - first:
+      213: 7439222386546121238
+    second: newdevtiles_nobackground_43
+  - first:
+      213: -378510998624639233
+    second: newdevtiles_nobackground_44
+  - first:
+      213: 971417692699372446
+    second: newdevtiles_nobackground_45
+  - first:
+      213: -7227410749051505585
+    second: newdevtiles_nobackground_46
+  - first:
+      213: -1286137730153262040
+    second: newdevtiles_nobackground_47
+  - first:
+      213: 3784180590501516670
+    second: newdevtiles_nobackground_48
+  - first:
+      213: 5257803179684288122
+    second: newdevtiles_nobackground_49
+  - first:
+      213: 6239209631909239553
+    second: newdevtiles_nobackground_50
+  - first:
+      213: 1341219757068336213
+    second: newdevtiles_nobackground_51
+  - first:
+      213: -6906121533828928874
+    second: newdevtiles_nobackground_52
+  - first:
+      213: -8993458868302470840
+    second: newdevtiles_nobackground_53
+  - first:
+      213: -6433486218244008083
+    second: newdevtiles_nobackground_54
+  - first:
+      213: -163259062535001637
+    second: newdevtiles_nobackground_55
+  - first:
+      213: 8261562211660952585
+    second: newdevtiles_nobackground_56
+  - first:
+      213: -4646015094003852224
+    second: newdevtiles_nobackground_57
+  - first:
+      213: -6453828493147389166
+    second: newdevtiles_nobackground_58
+  - first:
+      213: 4119786455456560678
+    second: newdevtiles_nobackground_59
+  - first:
+      213: -1702767617442005096
+    second: newdevtiles_nobackground_60
+  - first:
+      213: -5592915381711729790
+    second: newdevtiles_nobackground_61
+  - first:
+      213: 2525314483544607502
+    second: newdevtiles_nobackground_62
+  - first:
+      213: 5071701192327920395
+    second: newdevtiles_nobackground_63
+  - first:
+      213: -5358893394847490929
+    second: newdevtiles_nobackground_64
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 73
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ebee57e6ab46990800000000000000
+      internalID: -7393579704647762316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 73
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad0603cfcf46af50800000000000000
+      internalID: 6892284033485901224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_2
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 73
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ecac136d39a8d930800000000000000
+      internalID: 4168267536252316900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_3
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 73
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edc7c98f7ae2b4400800000000000000
+      internalID: 309392298370432222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_4
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 73
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 736366f31ca963e80800000000000000
+      internalID: -8199195916798380489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9e63682b260001b0800000000000000
+      internalID: -5692543146565341540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_6
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 358168fe0e6eebb60800000000000000
+      internalID: 7763896661398919251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_7
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83305ca11fa64ab0800000000000000
+      internalID: -5024135843844967537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_8
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207c20704056dfcb0800000000000000
+      internalID: -4828592157499406590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_9
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b41967e868687b0800000000000000
+      internalID: -5222338771456799943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 55
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a8cd0cc2f657f30800000000000000
+      internalID: 4572683234669529614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_11
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 55
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 037ec5f9b5151a4d0800000000000000
+      internalID: -3125127212460873936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_12
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 55
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d62cf59fdb8bd70800000000000000
+      internalID: 9059199529206836564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8420101f4b060730800000000000000
+      internalID: 3964868956146115727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_14
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd6facd0f096c7c0800000000000000
+      internalID: -4051391450604147273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_15
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50b32b5cea91785d0800000000000000
+      internalID: -3060449183343166715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_16
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea31334aa1418d610800000000000000
+      internalID: 1646087768460432302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_17
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55a0686daf646610800000000000000
+      internalID: 1613537357076669786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_18
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d178367831dfc690800000000000000
+      internalID: -7579609607409471024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_19
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2792ae8a0a33088a0800000000000000
+      internalID: -6304982713196992142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_20
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56f076f482241bf30800000000000000
+      internalID: 4589522236165525349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_21
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514762cd9ce7d69d0800000000000000
+      internalID: -2779425989570694123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_22
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 46
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14b4bfca604c9120800000000000000
+      internalID: 2421881527113921562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df738cc3ab5376050800000000000000
+      internalID: 5793658519635376125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_24
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06fb13fbfff637790800000000000000
+      internalID: -7533554607445655712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_25
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eb2122ec4e5133a0800000000000000
+      internalID: -6687460287364125720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_26
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c5a39db3d67b170800000000000000
+      internalID: 8194138150838885458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_27
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82f9b2dc4201efe50800000000000000
+      internalID: 6844926233896787752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_28
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d790ca621853db090800000000000000
+      internalID: -8017192932833752707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_29
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84cff73b2a592ebb0800000000000000
+      internalID: -4908196117851669432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_30
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 958f4d107632eb1f0800000000000000
+      internalID: -1027344739674556327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_31
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ab9d708685e1220800000000000000
+      internalID: 2458499650422422095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_32
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 37
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c58651750b19a6d40800000000000000
+      internalID: 5578431275013072988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 28
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7be8cafd2dd7971f0800000000000000
+      internalID: -1046667093737697609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_34
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 28
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4a50801fb27dbbc0800000000000000
+      internalID: -3765727548470699442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_35
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 28
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7c1825adcc0ed890800000000000000
+      internalID: -7431488257736041347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_36
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 28
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9cf41d313e5c3970800000000000000
+      internalID: 8735960942763113626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_37
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 28
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19c234d6977697c70800000000000000
+      internalID: 8969313904106876049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_38
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 28
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07890bcd94a9ea040800000000000000
+      internalID: 4660832306400893040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdddc04a4fa5ec6a0800000000000000
+      internalID: -6427099611440292389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_40
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eac0d87bab13d300800000000000000
+      internalID: 275594425480039145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_41
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92177399fc5ba5400800000000000000
+      internalID: 313763027289076009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_42
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7f3878202f70cb0800000000000000
+      internalID: -4897679977064695817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_43
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a173b885d6d3760800000000000000
+      internalID: 7439222386546121238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_44
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff6666f80424fbaf0800000000000000
+      internalID: -378510998624639233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_45
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9b20e5ae3b2b7d00800000000000000
+      internalID: 971417692699372446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_46
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44f1f8573413bb90800000000000000
+      internalID: -7227410749051505585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_47
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824dcf57c88b62ee0800000000000000
+      internalID: -1286137730153262040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_48
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 19
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7555c6923c148430800000000000000
+      internalID: 3784180590501516670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a765008822877f840800000000000000
+      internalID: 5257803179684288122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_50
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10b552d7a10269650800000000000000
+      internalID: 6239209631909239553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_51
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c3bc15348fc9210800000000000000
+      internalID: 1341219757068336213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_52
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69a63702e078820a0800000000000000
+      internalID: -6906121533828928874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_53
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 841aeb40fc0d03380800000000000000
+      internalID: -8993458868302470840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_54
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d67d13ede5aa7b6a0800000000000000
+      internalID: -6433486218244008083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_55
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd9ec336fbcfbbdf0800000000000000
+      internalID: -163259062535001637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_56
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90477d35f07f6a270800000000000000
+      internalID: 8261562211660952585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_57
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04c1ccc33e9068fb0800000000000000
+      internalID: -4646015094003852224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_58
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 10
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 213c7a8ed256f66a0800000000000000
+      internalID: -6453828493147389166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62634f324fb6c2930800000000000000
+      internalID: 4119786455456560678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_60
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89fb453afdd8e58e0800000000000000
+      internalID: -1702767617442005096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_61
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b0146c719f162b0800000000000000
+      internalID: -5592915381711729790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_62
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b43d1a428bb0320800000000000000
+      internalID: 2525314483544607502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_63
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b71a70d5d426640800000000000000
+      internalID: 5071701192327920395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: newdevtiles_nobackground_64
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 1
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8c9dea99d261a5b0800000000000000
+      internalID: -5358893394847490929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
