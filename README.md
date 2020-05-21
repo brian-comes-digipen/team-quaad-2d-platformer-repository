@@ -18,7 +18,8 @@ https://github.com/brian-comes-digipen/team-quaad-2d-platformer-repository.git
 * Director: Emmy
 * Producer: Zach
 * Design Lead: Hugo
-* Art Lead: ``[REDACTED]``
+* Art Lead: Makayla
+* Extra Artist: Maddy
 * Tech Lead: Brian
 * Programmer: Hunter
 * Sound Lead: Henry
