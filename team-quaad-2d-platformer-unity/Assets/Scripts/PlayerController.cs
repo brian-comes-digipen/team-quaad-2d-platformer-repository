@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        savePos = this.transform.position;
+        savePos = transform.position;
         rb2D = GetComponent<Rigidbody2D>();
         text = GameObject.Find("text");
     }
