@@ -55,6 +55,12 @@ public class PlayerController : MonoBehaviour
 
     public float walkSpeed = 3f;
 
+    public static float playerHeight;
+
+    public static float playerOffset;
+
+    private BoxCollider2D bc;
+
     #endregion Public Fields
 
     #region Private Methods
@@ -105,6 +111,22 @@ public class PlayerController : MonoBehaviour
         // Sets our own velocity equal to the value of the Rigidbody velocity
         rb2D.velocity = vel;
     }
+    private void Crouch()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            bc.size = new Vector3(bc.size.x, playerHeight / 2);
+            bc.offset = new Vector3(bc.offset.x, playerOffset - playerHeight / 4);
+            //ChangeState(AnimationState.Crouch);
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            bc.size = new Vector3(bc.size.x, playerHeight);
+            bc.offset = new Vector3(bc.offset.x, playerOffset);
+            //ChangeState(AnimationState.Walk);
+        }
+
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -127,8 +149,11 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        respawnPos = transform.position;
         rb2D = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
+        playerHeight = bc.size.y;
+        playerOffset = bc.offset.y;
+        respawnPos = transform.position;
     }
 
     // Update is called once per frame
@@ -136,6 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         Jump();
+        Crouch();
         Respawn();
     }
 
