@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ItemPickup : MonoBehaviour
+public class EnemyBehavior : MonoBehaviour
 {
     #region Private Fields
 
@@ -10,48 +10,21 @@ public class ItemPickup : MonoBehaviour
 
     #region Public Fields
 
-    public ItemTypes itemType = ItemTypes.Dummy;
+    public EnemyTypes enemyType = EnemyTypes.Dummy;
 
     #endregion Public Fields
 
     #region Public Enums
 
-    public enum ItemTypes
+    public enum EnemyTypes
     {
-        // Null/placeholder
         Dummy = -1,
 
-        // Abilities
+        Ground,
 
-        EnableCrouch,
+        Wall,
 
-        EnableJump,
-
-        EnableDblJump,
-
-        EnablePunch,
-
-        EnableSprint,
-
-        EnablePushPull,
-
-        EnableWallClimb,
-
-        // Keys & Items
-        BlueKey,
-
-        EnableFlashlight,
-
-        RedKey,
-
-        YellowKey,
-
-        // Other stuff
-        SetRespawnPoint,
-
-        JumpRefill,
-
-        ExtraLife
+        Air
     }
 
     #endregion Public Enums

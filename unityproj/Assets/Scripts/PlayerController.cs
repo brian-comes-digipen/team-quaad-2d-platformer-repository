@@ -4,27 +4,56 @@ public class PlayerController : MonoBehaviour
 {
     #region Private Fields
 
+    private float deathYValue;
+
     private bool isDead;
 
     private Rigidbody2D rb2D;
-
-    private Vector3 savePos;
-
-    private GameObject text;
 
     #endregion Private Fields
 
     #region Public Fields
 
-    public int jumpCount = 1;
+    [Header("Abilities")]
+    public bool CanCrouch = false;
 
+    public bool CanJump = true;
+
+    public bool CanJumpTwice = true;
+
+    public bool CanMove = true;
+
+    public bool CanPunch = false;
+
+    public bool CanPushPull = false;
+
+    public bool CanSprint = false;
+
+    public bool CanWallClimb = false;
+
+    [Header("Items")]
+    public bool HasBlueKey = false;
+
+    public bool HasFlashlight = false;
+
+    public bool HasRedKey = false;
+
+    public bool HasYellowKey = false;
+
+    [Header("Other Values")]
     public float jumpHeight = 3f;
 
-    public float moveSpeed = 3f;
+    public int jumpsLeft = 1;
 
-    public Vector3 vel;
+    public int remainingLives = 3;
 
-    public float weight = 0.5f;
+    public Vector2 respawnPos;
+
+    public float respawnYValue = -5f;
+
+    public float sprintSpeed = 5f;
+
+    public float walkSpeed = 3f;
 
     #endregion Public Fields
 
@@ -32,96 +61,74 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        vel = rb2D.velocity;
+        Vector2 vel = rb2D.velocity;
 
-        //Jump controls, implements double jump restraints by decreasing the "counter" each use
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (jumpCount > 0))
+        if (CanJump && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z)) && (jumpsLeft > 0))
         {
-            //Height is multiplied to compensate for the increase of negative velocity
             vel.y = jumpHeight * 1.4f;
-            jumpCount--;
+            jumpsLeft--;
         }
-
-        //When the player touches a layer (ground) the double jump cap is reset
         else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
-        {
-            jumpCount = 2;
+            if (CanJumpTwice)
+                jumpsLeft = 2;
+            else
+                jumpsLeft = 1;
 
-            //Resets the height to its original value to prevent a constant height increase
-        }
-
-        //Increases down-ward momentum to simulate weight
         if (rb2D.velocity.y < 0 && rb2D.velocity.y > -35f)
-        {
-            vel.y *= 1 + (.6f * Time.deltaTime) * weight;
-
-            //myRB.velocity += Vector2.up * Physics2D.gravity.y * (weight - 1) * Time.deltaTime;
-        }
+            vel.y *= 1 + (.6f * Time.deltaTime) * rb2D.mass;
 
         rb2D.velocity = vel;
     }
 
     private void Movement()
     {
-        //Sets the RigidBody's velocity equal to our own velocity
-        vel = rb2D.velocity;
+        // Sets the RigidBody's velocity equal to our own velocity
+        Vector2 vel = rb2D.velocity;
 
-        //Left and Right Controls
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            vel.x = moveSpeed;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            vel.x = -moveSpeed;
-        }
+        // Left and Right Controls
+        if (CanMove)
+            if (Input.GetKey(KeyCode.RightArrow))
+                vel.x = walkSpeed;
+            else if (Input.GetKey(KeyCode.LeftArrow))
+                vel.x = -walkSpeed;
 
-        //Sets velocity to 0 if controls are not being used
+        // stop it from creeping forever, adds delay when movement is 0/null
+        if (Mathf.Abs(vel.x) <= walkSpeed / 7)
+        {
+            vel.x = 0;
+        }
         else
         {
-            // stop it from creeping forever, adds delay when movement is 0/null
-            if (Mathf.Abs(vel.x) < moveSpeed / 7)
-            {
-                vel.x = 0;
-            }
-            else
-            {
-                vel.x = vel.x / 2;
-            }
+            vel.x = vel.x / 2;
         }
 
-        //Sets our own velocity equal to the value of the Rigidbody velocity
+        // Sets our own velocity equal to the value of the Rigidbody velocity
         rb2D.velocity = vel;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "ah")
+        if (collision.gameObject.GetComponent<ItemPickup>() != null)
         {
-            Destroy(collision.gameObject);
-            text.transform.position = new Vector3(0, 0);
+            // Item pickup
         }
     }
 
     private void Respawn()
     {
-        if (isDead)
-        {
-            this.transform.position = savePos;
-            isDead = false;
-        }
-        if (transform.position.y < -5)
+        if (transform.position.y <= deathYValue)
         {
             isDead = true;
+            transform.position = respawnPos;
+            isDead = false;
         }
     }
 
     // Start is called before the first frame update
     private void Start()
     {
-        savePos = transform.position;
+        respawnPos = transform.position;
         rb2D = GetComponent<Rigidbody2D>();
-        text = GameObject.Find("text");
     }
 
     // Update is called once per frame
