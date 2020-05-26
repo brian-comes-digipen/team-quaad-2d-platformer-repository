@@ -1,18 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     #region Private Fields
 
+    private BoxCollider2D bc;
+
     private float deathYValue;
 
     private bool isDead;
+
+    private bool jumpCooldown;
 
     private Rigidbody2D rb2D;
 
     #endregion Private Fields
 
     #region Public Fields
+
+    public static float playerHeight;
+
+    public static float playerOffset;
 
     [Header("Abilities")]
     public bool CanCrouch = false;
@@ -31,19 +40,21 @@ public class PlayerController : MonoBehaviour
 
     public bool CanWallClimb = false;
 
-    [Header("Items")]
-    public bool HasBlueKey = false;
-
     public bool HasFlashlight = false;
 
-    public bool HasRedKey = false;
+    [Header("Items")]
+    public bool HasKeyBlue = false;
 
-    public bool HasYellowKey = false;
+    public bool HasKeyRed = false;
 
-    [Header("Other Values")]
+    public bool HasKeyYellow = false;
+
+    [Header("Other Stuff")]
     public float jumpHeight = 3f;
 
     public int jumpsLeft = 1;
+
+    public GameObject punchHitbox = null;
 
     public int remainingLives = 3;
 
@@ -55,33 +66,56 @@ public class PlayerController : MonoBehaviour
 
     public float walkSpeed = 3f;
 
-    public static float playerHeight;
-
-    public static float playerOffset;
-
-    private BoxCollider2D bc;
-
     #endregion Public Fields
 
     #region Private Methods
+
+    private void Crouch()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            bc.size = new Vector3(bc.size.x, playerHeight / 2);
+            bc.offset = new Vector3(bc.offset.x, playerOffset - playerHeight / 4);
+
+            //ChangeState(AnimationState.Crouch);
+        }
+        if (Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            bc.size = new Vector3(bc.size.x, playerHeight);
+            bc.offset = new Vector3(bc.offset.x, playerOffset);
+
+            //ChangeState(AnimationState.Walk);
+        }
+    }
+
+    private IEnumerator DoubleJumpCoolDown()
+    {
+        jumpCooldown = true;
+        yield return new WaitForSeconds(Time.deltaTime * 8);
+        jumpCooldown = false;
+    }
 
     private void Jump()
     {
         Vector2 vel = rb2D.velocity;
 
-        if (CanJump && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z)) && (jumpsLeft > 0))
+        if (CanJump && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z)) && jumpsLeft > 0 && !jumpCooldown)
         {
             vel.y = jumpHeight * 1.4f;
             jumpsLeft--;
+            StartCoroutine(DoubleJumpCoolDown());
         }
         else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+        {
+            StopCoroutine(DoubleJumpCoolDown());
             if (CanJumpTwice)
                 jumpsLeft = 2;
             else
                 jumpsLeft = 1;
+        }
 
         if (rb2D.velocity.y < 0 && rb2D.velocity.y > -35f)
-            vel.y *= 1 + (.6f * Time.deltaTime) * rb2D.mass;
+            vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
 
         rb2D.velocity = vel;
     }
@@ -110,22 +144,6 @@ public class PlayerController : MonoBehaviour
 
         // Sets our own velocity equal to the value of the Rigidbody velocity
         rb2D.velocity = vel;
-    }
-    private void Crouch()
-    {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            bc.size = new Vector3(bc.size.x, playerHeight / 2);
-            bc.offset = new Vector3(bc.offset.x, playerOffset - playerHeight / 4);
-            //ChangeState(AnimationState.Crouch);
-        }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            bc.size = new Vector3(bc.size.x, playerHeight);
-            bc.offset = new Vector3(bc.offset.x, playerOffset);
-            //ChangeState(AnimationState.Walk);
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -1,20 +1,14 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
+    #region Public Fields
+
     public GameObject cineCam;
 
-    void Start()
-    {
+    #endregion Public Fields
 
-    }
-
-    void Update()
-    {
-
-    }
+    #region Private Methods
 
     private void OnTriggerEnter2D(Collider2D trigger)
     {
@@ -31,4 +25,14 @@ public class Camera : MonoBehaviour
             cineCam.SetActive(false);
         }
     }
+
+    private void Start()
+    {
+    }
+
+    private void Update()
+    {
+    }
+
+    #endregion Private Methods
 }

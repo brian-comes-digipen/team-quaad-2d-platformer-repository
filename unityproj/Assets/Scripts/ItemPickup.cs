@@ -38,20 +38,22 @@ public class ItemPickup : MonoBehaviour
         EnableWallClimb,
 
         // Keys & Items
-        BlueKey,
+        KeyBlue,
 
         EnableFlashlight,
 
-        RedKey,
+        KeyRed,
 
-        YellowKey,
+        KeyYellow,
 
         // Other stuff
         SetRespawnPoint,
 
         JumpRefill,
 
-        ExtraLife
+        ExtraLife,
+
+        Health
     }
 
     #endregion Public Enums
