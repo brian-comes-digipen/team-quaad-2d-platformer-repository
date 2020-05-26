@@ -38,9 +38,9 @@ public class PlayerController : MonoBehaviour
 
     public bool CanWallClimb = false;
 
+    [Header("Items")]
     public bool HasFlashlight = false;
 
-    [Header("Items")]
     public bool HasKeyBlue = false;
 
     public bool HasKeyRed = false;
@@ -50,11 +50,17 @@ public class PlayerController : MonoBehaviour
     [Header("Other Stuff")]
     public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
 
+    public GameObject hitBoxFeet = null;
+
+    public GameObject hitBoxPunch = null;
+
+    public GameObject hitBoxSideL = null;
+
+    public GameObject hitBoxSideR = null;
+
     public float jumpHeight = 3f;
 
     public int jumpsLeft = 1;
-
-    public GameObject punchHitbox = null;
 
     public int remainingLives = 3;
 
