@@ -50,6 +50,8 @@ public class PlayerController : MonoBehaviour
     public bool HasKeyYellow = false;
 
     [Header("Other Stuff")]
+    public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
+
     public float jumpHeight = 3f;
 
     public int jumpsLeft = 1;
