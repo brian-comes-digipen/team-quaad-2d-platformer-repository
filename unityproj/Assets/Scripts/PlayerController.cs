@@ -7,8 +7,6 @@ public class PlayerController : MonoBehaviour
 
     private BoxCollider2D bc;
 
-    private float deathYValue;
-
     private bool isDead;
 
     private bool jumpCooldown;
@@ -158,7 +156,7 @@ public class PlayerController : MonoBehaviour
 
     private void Respawn()
     {
-        if (transform.position.y <= deathYValue)
+        if (transform.position.y <= respawnYValue)
         {
             isDead = true;
             transform.position = respawnPos;
