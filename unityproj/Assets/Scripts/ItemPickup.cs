@@ -71,5 +71,21 @@ public class ItemPickup : MonoBehaviour
     {
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        PlayerController controller = other.GetComponent<PlayerController>();
+
+        if (controller != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     #endregion Private Methods
+
+    #region Public Methods
+
+
+
+    #endregion Public Methods
 }
