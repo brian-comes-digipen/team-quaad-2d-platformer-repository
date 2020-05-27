@@ -1,30 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Collision : MonoBehaviour
 {
+    #region Private Fields
+
+    private Color debugCollisionColor = Color.red;
+
+    #endregion Private Fields
+
+    #region Public Fields
+
     public LayerMask groundLayer;
 
     public bool onGround;
+
     public bool onWall;
+
     public bool rightWall;
+
     public bool leftWall;
 
     public int wallSide;
 
     public float collisionRadius = 0.25f;
+
     public Vector2 groundOffset, rightOffset, leftOffset;
-    private Color debugCollisionColor = Color.red;
+
+    #endregion Public Fields
+
+    #region Private Methods
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         onGround = Physics2D.OverlapCircle((Vector2)transform.position + groundOffset, collisionRadius, groundLayer);
         onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer)
@@ -37,7 +49,7 @@ public class Collision : MonoBehaviour
         wallSide = rightWall ? 1 : -1;
     }
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
 
@@ -47,4 +59,6 @@ public class Collision : MonoBehaviour
         Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, collisionRadius);
         Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
     }
+
+    #endregion Private Methods
 }

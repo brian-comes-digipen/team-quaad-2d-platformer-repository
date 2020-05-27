@@ -1,28 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
+    #region Public Fields
+
     public PlayerController Player;
 
     public int numOfHearts;
 
     public Image[] hearts;
+
     public Sprite fullHeart;
+
     public Sprite halfHeart;
+
     public Sprite emptyHeart;
 
+    #endregion Public Fields
+
+    #region Private Methods
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Player.health > numOfHearts)
         {
@@ -51,4 +56,6 @@ public class UIController : MonoBehaviour
             }
         }
     }
+
+    #endregion Private Methods
 }

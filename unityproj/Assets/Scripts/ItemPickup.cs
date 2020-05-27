@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
@@ -12,7 +13,12 @@ public class ItemPickup : MonoBehaviour
 
     public ItemTypes itemType = ItemTypes.Dummy;
 
-    public bool oneUse = true;
+    [Header("USE THESE FIELDS ONLY FOR SPECIFIC ITEM TYPES")]
+    public bool UseOnce = true;
+
+    public float itemRespawnDelaySeconds = 1.0f;
+
+    public Vector2 respawnPos = new Vector2(0, 0);
 
     #endregion Public Fields
 
@@ -55,7 +61,9 @@ public class ItemPickup : MonoBehaviour
 
         ExtraLife,
 
-        Health
+        Health,
+
+        SecretCollectible
     }
 
     #endregion Public Enums
@@ -73,102 +81,94 @@ public class ItemPickup : MonoBehaviour
     {
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController controller = other.GetComponent<PlayerController>();
+        PlayerController pC = other.GetComponent<PlayerController>();
 
-        if (controller != null)
+        if (pC != null)
         {
-            //Abilities
-            if (itemType == ItemTypes.EnableCrouch)
+            switch (itemType)
             {
-                controller.CanCrouch = true;
-            }
+                case ItemTypes.EnableCrouch:
+                    pC.CanCrouch = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnableJump)
-            {
-                controller.CanJump = true;
-            }
+                case ItemTypes.EnableJump:
+                    pC.CanJump = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnableDblJump)
-            {
-                controller.CanJumpTwice = true;
-            }
+                case ItemTypes.EnableDblJump:
+                    pC.CanJumpTwice = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnablePunch)
-            {
-                controller.CanPunch = true;
-            }
+                case ItemTypes.EnablePunch:
+                    pC.CanPunch = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnableSprint)
-            {
-                controller.CanSprint = true;
-            }
+                case ItemTypes.EnableSprint:
+                    pC.CanSprint = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnablePushPull)
-            {
-                controller.CanPushPull = true;
-            }
+                case ItemTypes.EnablePushPull:
+                    pC.CanPushPull = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnableWallClimb)
-            {
-                controller.CanWallClimb = true;
-            }
+                case ItemTypes.EnableWallClimb:
+                    pC.CanWallClimb = true;
+                    break;
 
-            //Items
-            else if (itemType == ItemTypes.KeyBlue)
-            {
-                controller.HasKeyBlue = true;
-            }
+                case ItemTypes.KeyBlue:
+                    pC.HasKeyBlue = true;
+                    break;
 
-            else if (itemType == ItemTypes.KeyRed)
-            {
-                controller.HasKeyRed = true;
-            }
+                case ItemTypes.KeyRed:
+                    pC.HasKeyRed = true;
+                    break;
 
-            else if (itemType == ItemTypes.KeyYellow)
-            {
-                controller.HasKeyYellow = true;
-            }
+                case ItemTypes.KeyYellow:
+                    pC.HasKeyYellow = true;
+                    break;
 
-            else if (itemType == ItemTypes.EnableFlashlight)
-            {
-                controller.HasFlashlight = true;
-            }
+                case ItemTypes.EnableFlashlight:
+                    pC.HasFlashlight = true;
+                    break;
 
-            //Other
-            else if (itemType == ItemTypes.Health)
-            {
-                controller.health++;
-            }
+                case ItemTypes.Health:
+                    ++pC.health;
+                    break;
 
-            else if (itemType == ItemTypes.ExtraLife)
-            {
-                controller.remainingLives++;
-            }
+                case ItemTypes.ExtraLife:
+                    ++pC.livesLeft;
+                    break;
 
-            else if (itemType == ItemTypes.JumpRefill)
-            {
-                controller.jumpsLeft++;
-            }
+                case ItemTypes.JumpRefill:
+                    ++pC.jumpsLeft;
+                    break;
 
-            else if (itemType == ItemTypes.SetRespawnPoint)
-            {
-               // controller.respawnPos = gameObject.Transform.position;
-            }
+                case ItemTypes.SetRespawnPoint:
+                    pC.respawnPos = respawnPos;
+                    break;
 
-            if (oneUse)
+                default:
+                    break;
+            }
+            if (UseOnce)
             {
                 Destroy(gameObject);
+            }
+            else
+            {
+                StartCoroutine(TempDisable());
             }
         }
     }
 
+    private IEnumerator TempDisable()
+    {
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(itemRespawnDelaySeconds);
+        gameObject.SetActive(true);
+    }
+
     #endregion Private Methods
-
-    #region Public Methods
-
-
-
-    #endregion Public Methods
 }
