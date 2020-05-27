@@ -77,7 +77,63 @@ public class ItemPickup : MonoBehaviour
 
         if (controller != null)
         {
-            controller.CanWallClimb = true;
+            //Abilities
+            if (itemType == ItemTypes.EnableCrouch)
+            {
+                controller.CanCrouch = true;
+            }
+
+            if (itemType == ItemTypes.EnableJump)
+            {
+                controller.CanJump = true;
+            }
+
+            if (itemType == ItemTypes.EnableDblJump)
+            {
+                controller.CanJumpTwice = true;
+            }
+
+            if (itemType == ItemTypes.EnablePunch)
+            {
+                controller.CanPunch = true;
+            }
+
+            if (itemType == ItemTypes.EnableSprint)
+            {
+                controller.CanSprint = true;
+            }
+
+            if (itemType == ItemTypes.EnablePushPull)
+            {
+                controller.CanPushPull = true;
+            }
+
+            if (itemType == ItemTypes.EnableWallClimb)
+            {
+                controller.CanWallClimb = true;
+            }
+
+            //Items
+            if (itemType == ItemTypes.KeyBlue)
+            {
+                controller.HasKeyBlue = true;
+            }
+
+            if (itemType == ItemTypes.KeyRed)
+            {
+                controller.HasKeyRed = true;
+            }
+
+            if (itemType == ItemTypes.KeyYellow)
+            {
+                controller.HasKeyYellow = true;
+            }
+
+            if (itemType == ItemTypes.EnableFlashlight)
+            {
+                controller.HasFlashlight = true;
+            }
+
             Destroy(gameObject);
         }
     }
