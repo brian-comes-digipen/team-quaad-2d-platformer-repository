@@ -12,6 +12,8 @@ public class ItemPickup : MonoBehaviour
 
     public ItemTypes itemType = ItemTypes.Dummy;
 
+    public bool oneUse = true;
+
     #endregion Public Fields
 
     #region Public Enums
@@ -77,8 +79,88 @@ public class ItemPickup : MonoBehaviour
 
         if (controller != null)
         {
-            controller.CanWallClimb = true;
-            Destroy(gameObject);
+            //Abilities
+            if (itemType == ItemTypes.EnableCrouch)
+            {
+                controller.CanCrouch = true;
+            }
+
+            else if (itemType == ItemTypes.EnableJump)
+            {
+                controller.CanJump = true;
+            }
+
+            else if (itemType == ItemTypes.EnableDblJump)
+            {
+                controller.CanJumpTwice = true;
+            }
+
+            else if (itemType == ItemTypes.EnablePunch)
+            {
+                controller.CanPunch = true;
+            }
+
+            else if (itemType == ItemTypes.EnableSprint)
+            {
+                controller.CanSprint = true;
+            }
+
+            else if (itemType == ItemTypes.EnablePushPull)
+            {
+                controller.CanPushPull = true;
+            }
+
+            else if (itemType == ItemTypes.EnableWallClimb)
+            {
+                controller.CanWallClimb = true;
+            }
+
+            //Items
+            else if (itemType == ItemTypes.KeyBlue)
+            {
+                controller.HasKeyBlue = true;
+            }
+
+            else if (itemType == ItemTypes.KeyRed)
+            {
+                controller.HasKeyRed = true;
+            }
+
+            else if (itemType == ItemTypes.KeyYellow)
+            {
+                controller.HasKeyYellow = true;
+            }
+
+            else if (itemType == ItemTypes.EnableFlashlight)
+            {
+                controller.HasFlashlight = true;
+            }
+
+            //Other
+            else if (itemType == ItemTypes.Health)
+            {
+                controller.health++;
+            }
+
+            else if (itemType == ItemTypes.ExtraLife)
+            {
+                controller.remainingLives++;
+            }
+
+            else if (itemType == ItemTypes.JumpRefill)
+            {
+                controller.jumpsLeft++;
+            }
+
+            else if (itemType == ItemTypes.SetRespawnPoint)
+            {
+               // controller.respawnPos = gameObject.Transform.position;
+            }
+
+            if (oneUse)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
