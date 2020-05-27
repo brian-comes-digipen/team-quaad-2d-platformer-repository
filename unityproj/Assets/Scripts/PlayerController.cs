@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public static float playerOffset;
 
+
     [Header("Abilities")]
     public bool CanCrouch = false;
 
@@ -37,6 +38,15 @@ public class PlayerController : MonoBehaviour
     public bool CanSprint = false;
 
     public bool CanWallClimb = false;
+
+    public bool wallGrab;
+
+    public bool wallJump;
+
+    public bool wallSlide;
+
+   
+
 
     [Header("Items")]
     public bool HasFlashlight = false;
@@ -58,6 +68,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject hitBoxSideR = null;
 
+    public Collision collision;
+
     public float jumpHeight = 3f;
 
     public int jumpsLeft = 1;
@@ -72,26 +84,32 @@ public class PlayerController : MonoBehaviour
 
     public float walkSpeed = 3f;
 
+    public float fallSpeed = 2f;
+
     #endregion Public Fields
 
     #region Private Methods
 
     private void Crouch()
     {
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if(!wallGrab)
         {
-            bc.size = new Vector3(bc.size.x, playerHeight / 2);
-            bc.offset = new Vector3(bc.offset.x, playerOffset - playerHeight / 4);
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                bc.size = new Vector3(bc.size.x, playerHeight / 2);
+                bc.offset = new Vector3(bc.offset.x, playerOffset - playerHeight / 4);
 
-            //ChangeState(AnimationState.Crouch);
-        }
-        if (Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            bc.size = new Vector3(bc.size.x, playerHeight);
-            bc.offset = new Vector3(bc.offset.x, playerOffset);
+                //ChangeState(AnimationState.Crouch);
+            }
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                bc.size = new Vector3(bc.size.x, playerHeight);
+                bc.offset = new Vector3(bc.offset.x, playerOffset);
 
-            //ChangeState(AnimationState.Walk);
+                //ChangeState(AnimationState.Walk);
+            }
         }
+        
     }
 
     private IEnumerator DoubleJumpCoolDown()
@@ -103,53 +121,107 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        Vector2 vel = rb2D.velocity;
-
-        if (CanJump && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z)) && jumpsLeft > 0 && !jumpCooldown)
+        if (!wallGrab)
         {
-            vel.y = jumpHeight * 1.4f;
-            jumpsLeft--;
-            StartCoroutine(DoubleJumpCoolDown());
-        }
-        else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
-        {
-            StopCoroutine(DoubleJumpCoolDown());
-            if (CanJumpTwice)
-                jumpsLeft = 2;
-            else
-                jumpsLeft = 1;
-        }
+            Vector2 vel = rb2D.velocity;
 
-        if (rb2D.velocity.y < 0 && rb2D.velocity.y > -35f)
-            vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
+            if (CanJump && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z)) && jumpsLeft > 0 && !jumpCooldown)
+            {
+                vel.y = jumpHeight * 1.4f;
+                jumpsLeft--;
+                StartCoroutine(DoubleJumpCoolDown());
+            }
+            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+            {
+                StopCoroutine(DoubleJumpCoolDown());
+                if (CanJumpTwice)
+                    jumpsLeft = 2;
+                else
+                    jumpsLeft = 1;
+            }
 
-        rb2D.velocity = vel;
+            if (rb2D.velocity.y < 0 &&  !collision.onGround)
+                vel.y = -fallSpeed;
+                //vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
+
+            rb2D.velocity = vel;
+        }
     }
 
     private void Movement()
     {
-        // Sets the RigidBody's velocity equal to our own velocity
         Vector2 vel = rb2D.velocity;
 
-        // Left and Right Controls
-        if (CanMove)
-            if (Input.GetKey(KeyCode.RightArrow))
-                vel.x = walkSpeed;
-            else if (Input.GetKey(KeyCode.LeftArrow))
-                vel.x = -walkSpeed;
-
-        // stop it from creeping forever, adds delay when movement is 0/null
-        if (Mathf.Abs(vel.x) <= walkSpeed / 7)
+        if (wallGrab)
         {
+            //While latched to a wall, player cannot move left or right
             vel.x = 0;
+            CanMove = false;
+            CanWallClimb = true;
+
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                vel.y = walkSpeed;
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                vel.y = -walkSpeed;
+            }
+            else
+            {
+                vel.y = 0;
+            }
         }
         else
         {
-            vel.x = vel.x / 2;
-        }
+            CanMove = true;
+            // Sets the RigidBody's velocity equal to our own velocity
 
+            // Left and Right Controls
+            
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                vel.x = walkSpeed;
+            }
+            else if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                vel.x = -walkSpeed;
+            }
+            
+
+            // stop it from creeping forever, adds delay when movement is 0/null
+            if (Mathf.Abs(vel.x) <= walkSpeed / 7)
+            {
+                vel.x = 0;
+            }
+            else
+            {
+                vel.x = vel.x / 2;
+            }
+        }
         // Sets our own velocity equal to the value of the Rigidbody velocity
         rb2D.velocity = vel;
+    }
+
+    private void WallClimb()
+    {
+        //Wall Grab
+        if (collision.onWall && Input.GetKey(KeyCode.LeftShift))
+        {
+            wallGrab = true;
+        }
+
+        if (!collision.onWall || !Input.GetKey(KeyCode.LeftShift))
+        {
+            wallGrab = false;
+        }
+        if (wallGrab)
+        {
+            rb2D.gravityScale = 0;
+            //rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
+        }
+        else rb2D.gravityScale = 1;
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -159,6 +231,7 @@ public class PlayerController : MonoBehaviour
             // Item pickup
         }
     }
+
 
     private void Respawn()
     {
@@ -175,6 +248,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
+        collision = GetComponent<Collision>();
         playerHeight = bc.size.y;
         playerOffset = bc.offset.y;
         respawnPos = transform.position;
@@ -186,7 +260,9 @@ public class PlayerController : MonoBehaviour
         Movement();
         Jump();
         Crouch();
+        WallClimb();
         Respawn();
+
     }
 
     #endregion Private Methods
