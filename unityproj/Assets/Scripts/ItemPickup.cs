@@ -136,6 +136,7 @@ public class ItemPickup : MonoBehaviour
                 controller.HasFlashlight = true;
             }
 
+            //Other
             else if (itemType == ItemTypes.Health)
             {
                 controller.health++;
@@ -149,6 +150,11 @@ public class ItemPickup : MonoBehaviour
             else if (itemType == ItemTypes.JumpRefill)
             {
                 controller.jumpsLeft++;
+            }
+
+            else if (itemType == ItemTypes.SetRespawnPoint)
+            {
+               // controller.respawnPos = gameObject.Transform.position;
             }
 
             if (oneUse)
