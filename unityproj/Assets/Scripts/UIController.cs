@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
 
     public Image[] hearts;
     public Sprite fullHeart;
+    public Sprite halfHeart;
     public Sprite emptyHeart;
 
     // Start is called before the first frame update
@@ -40,7 +41,7 @@ public class UIController : MonoBehaviour
             }
 
             // How many hearts on screen
-            if (i < numOfHearts)
+            if (i < (numOfHearts - 3))
             {
                 hearts[i].enabled = true;
             }
