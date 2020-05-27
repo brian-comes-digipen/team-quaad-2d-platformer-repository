@@ -12,6 +12,8 @@ public class ItemPickup : MonoBehaviour
 
     public ItemTypes itemType = ItemTypes.Dummy;
 
+    public bool oneUse = true;
+
     #endregion Public Fields
 
     #region Public Enums
@@ -83,58 +85,76 @@ public class ItemPickup : MonoBehaviour
                 controller.CanCrouch = true;
             }
 
-            if (itemType == ItemTypes.EnableJump)
+            else if (itemType == ItemTypes.EnableJump)
             {
                 controller.CanJump = true;
             }
 
-            if (itemType == ItemTypes.EnableDblJump)
+            else if (itemType == ItemTypes.EnableDblJump)
             {
                 controller.CanJumpTwice = true;
             }
 
-            if (itemType == ItemTypes.EnablePunch)
+            else if (itemType == ItemTypes.EnablePunch)
             {
                 controller.CanPunch = true;
             }
 
-            if (itemType == ItemTypes.EnableSprint)
+            else if (itemType == ItemTypes.EnableSprint)
             {
                 controller.CanSprint = true;
             }
 
-            if (itemType == ItemTypes.EnablePushPull)
+            else if (itemType == ItemTypes.EnablePushPull)
             {
                 controller.CanPushPull = true;
             }
 
-            if (itemType == ItemTypes.EnableWallClimb)
+            else if (itemType == ItemTypes.EnableWallClimb)
             {
                 controller.CanWallClimb = true;
             }
 
             //Items
-            if (itemType == ItemTypes.KeyBlue)
+            else if (itemType == ItemTypes.KeyBlue)
             {
                 controller.HasKeyBlue = true;
             }
 
-            if (itemType == ItemTypes.KeyRed)
+            else if (itemType == ItemTypes.KeyRed)
             {
                 controller.HasKeyRed = true;
             }
 
-            if (itemType == ItemTypes.KeyYellow)
+            else if (itemType == ItemTypes.KeyYellow)
             {
                 controller.HasKeyYellow = true;
             }
 
-            if (itemType == ItemTypes.EnableFlashlight)
+            else if (itemType == ItemTypes.EnableFlashlight)
             {
                 controller.HasFlashlight = true;
             }
 
-            Destroy(gameObject);
+            else if (itemType == ItemTypes.Health)
+            {
+                controller.health++;
+            }
+
+            else if (itemType == ItemTypes.ExtraLife)
+            {
+                controller.remainingLives++;
+            }
+
+            else if (itemType == ItemTypes.JumpRefill)
+            {
+                controller.jumpsLeft++;
+            }
+
+            if (oneUse)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
