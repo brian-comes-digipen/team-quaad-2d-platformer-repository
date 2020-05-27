@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     #region Private Fields
 
-    private BoxCollider2D bc;
+    private BoxCollider2D boxCol;
 
     private bool isDead;
 
@@ -13,14 +13,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
+    private Collision col;
+
     #endregion Private Fields
 
     #region Public Fields
 
+    [Header("")]
     public static float playerHeight;
 
     public static float playerOffset;
-
 
     [Header("Abilities")]
     public bool CanCrouch = false;
@@ -39,14 +41,13 @@ public class PlayerController : MonoBehaviour
 
     public bool CanWallClimb = false;
 
-    public bool wallGrab;
+    public bool CanWallGrab;
 
-    public bool wallJump;
+    public bool CanWallJump;
 
-    public bool wallSlide;
+    public bool CanWallSlide;
 
-   
-
+    public float fallSpeed = 2f;
 
     [Header("Items")]
     public bool HasFlashlight = false;
@@ -58,33 +59,25 @@ public class PlayerController : MonoBehaviour
     public bool HasKeyYellow = false;
 
     [Header("Other Stuff")]
-    public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
-
-    public GameObject hitBoxFeet = null;
+    public Vector2 respawnPos;
 
     public GameObject hitBoxPunch = null;
 
-    public GameObject hitBoxSideL = null;
+    // Y coordinate at which the player dies / respawns
+    public float respawnYValue = -5f;
 
-    public GameObject hitBoxSideR = null;
+    [Header("Stats")]
+    public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
 
-    public Collision collision;
+    public int livesLeft = 3;
 
     public float jumpHeight = 3f;
 
     public int jumpsLeft = 1;
 
-    public int remainingLives = 3;
-
-    public Vector2 respawnPos;
-
-    public float respawnYValue = -5f;
-
-    public float sprintSpeed = 5f;
-
     public float walkSpeed = 3f;
 
-    public float fallSpeed = 2f;
+    public float sprintSpeed = 5f;
 
     #endregion Public Fields
 
@@ -92,24 +85,23 @@ public class PlayerController : MonoBehaviour
 
     private void Crouch()
     {
-        if(!wallGrab)
+        if (!CanWallGrab)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                bc.size = new Vector3(bc.size.x, playerHeight / 2);
-                bc.offset = new Vector3(bc.offset.x, playerOffset - playerHeight / 4);
+                boxCol.size = new Vector3(boxCol.size.x, playerHeight / 2);
+                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset - playerHeight / 4);
 
                 //ChangeState(AnimationState.Crouch);
             }
             if (Input.GetKeyUp(KeyCode.DownArrow))
             {
-                bc.size = new Vector3(bc.size.x, playerHeight);
-                bc.offset = new Vector3(bc.offset.x, playerOffset);
+                boxCol.size = new Vector3(boxCol.size.x, playerHeight);
+                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset);
 
                 //ChangeState(AnimationState.Walk);
             }
         }
-        
     }
 
     private IEnumerator DoubleJumpCoolDown()
@@ -121,7 +113,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if (!wallGrab)
+        if (!CanWallGrab)
         {
             Vector2 vel = rb2D.velocity;
 
@@ -140,9 +132,10 @@ public class PlayerController : MonoBehaviour
                     jumpsLeft = 1;
             }
 
-            if (rb2D.velocity.y < 0 &&  !collision.onGround)
+            if (rb2D.velocity.y < 0 && !col.onGround)
                 vel.y = -fallSpeed;
-                //vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
+
+            //vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
 
             rb2D.velocity = vel;
         }
@@ -152,7 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 vel = rb2D.velocity;
 
-        if (wallGrab)
+        if (CanWallGrab)
         {
             //While latched to a wall, player cannot move left or right
             vel.x = 0;
@@ -175,10 +168,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             CanMove = true;
+
             // Sets the RigidBody's velocity equal to our own velocity
 
             // Left and Right Controls
-            
+
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 vel.x = walkSpeed;
@@ -187,7 +181,6 @@ public class PlayerController : MonoBehaviour
             {
                 vel.x = -walkSpeed;
             }
-            
 
             // stop it from creeping forever, adds delay when movement is 0/null
             if (Mathf.Abs(vel.x) <= walkSpeed / 7)
@@ -199,29 +192,9 @@ public class PlayerController : MonoBehaviour
                 vel.x = vel.x / 2;
             }
         }
+
         // Sets our own velocity equal to the value of the Rigidbody velocity
         rb2D.velocity = vel;
-    }
-
-    private void WallClimb()
-    {
-        //Wall Grab
-        if (collision.onWall && Input.GetKey(KeyCode.LeftShift))
-        {
-            wallGrab = true;
-        }
-
-        if (!collision.onWall || !Input.GetKey(KeyCode.LeftShift))
-        {
-            wallGrab = false;
-        }
-        if (wallGrab)
-        {
-            rb2D.gravityScale = 0;
-            //rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
-        }
-        else rb2D.gravityScale = 1;
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -231,7 +204,6 @@ public class PlayerController : MonoBehaviour
             // Item pickup
         }
     }
-
 
     private void Respawn()
     {
@@ -247,10 +219,10 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
-        collision = GetComponent<Collision>();
-        playerHeight = bc.size.y;
-        playerOffset = bc.offset.y;
+        boxCol = GetComponent<BoxCollider2D>();
+        col = GetComponent<Collision>();
+        playerHeight = boxCol.size.y;
+        playerOffset = boxCol.offset.y;
         respawnPos = transform.position;
     }
 
@@ -262,7 +234,27 @@ public class PlayerController : MonoBehaviour
         Crouch();
         WallClimb();
         Respawn();
+    }
 
+    private void WallClimb()
+    {
+        //Wall Grab
+        if (col.onWall && Input.GetKey(KeyCode.LeftShift))
+        {
+            CanWallGrab = true;
+        }
+
+        if (!col.onWall || !Input.GetKey(KeyCode.LeftShift))
+        {
+            CanWallGrab = false;
+        }
+        if (CanWallGrab)
+        {
+            rb2D.gravityScale = 0;
+
+            //rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
+        }
+        else rb2D.gravityScale = 1;
     }
 
     #endregion Private Methods

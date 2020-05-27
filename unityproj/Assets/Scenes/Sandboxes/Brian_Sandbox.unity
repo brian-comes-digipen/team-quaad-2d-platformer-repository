@@ -7028,6 +7028,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Damping: 0
+--- !u!1 &1723120931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2465924072316334839, guid: e71dbb553bd071740afac53a5eeedc21,
+    type: 3}
+  m_PrefabInstance: {fileID: 2465924070994242711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1723120936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723120931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b173c68f6430e42adce5cf4c4dfb00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  onGround: 0
+  onWall: 0
+  rightWall: 0
+  leftWall: 0
+  wallSide: 0
+  collisionRadius: 0.25
+  groundOffset: {x: 0, y: 0}
+  rightOffset: {x: 0, y: 0}
+  leftOffset: {x: 0, y: 0}
 --- !u!1 &1973771319 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2465924071739044000, guid: e71dbb553bd071740afac53a5eeedc21,
@@ -7097,6 +7127,91 @@ PrefabInstance:
       propertyPath: hitBoxSideR
       value: 
       objectReference: {fileID: 1973771319}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: collision
+      value: 
+      objectReference: {fileID: 1723120936}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanWallClimb
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanSprint
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: wallSlide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: wallJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: wallGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanPushPull
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanPunch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanCrouch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: HasFlashlight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: HasKeyBlue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: HasKeyRed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: HasKeyYellow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanWallSlide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanWallJump
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: CanWallGrab
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: fallSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334834, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
       propertyPath: m_LocalPosition.x
