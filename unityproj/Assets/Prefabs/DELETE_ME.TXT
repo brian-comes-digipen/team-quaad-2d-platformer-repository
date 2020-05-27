@@ -1,1 +1,0 @@
-This file is here so empty folders are committed by Git. Delete me once there are other files in this folder.
