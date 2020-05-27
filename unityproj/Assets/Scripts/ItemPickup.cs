@@ -77,6 +77,7 @@ public class ItemPickup : MonoBehaviour
 
         if (controller != null)
         {
+            controller.CanWallClimb = true;
             Destroy(gameObject);
         }
     }
