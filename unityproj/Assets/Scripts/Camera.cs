@@ -4,25 +4,29 @@ public class Camera : MonoBehaviour
 {
     #region Public Fields
 
-    public GameObject cineCam;
+    public GameObject virtualCam;
 
     #endregion Public Fields
 
     #region Private Methods
 
-    private void OnTriggerEnter2D(Collider2D trigger)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (trigger.CompareTag("Player") && !trigger.isTrigger)
+        Debug.Log("Player Entered");
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
-            cineCam.SetActive(true);
+            
+            virtualCam.SetActive(true);
         }
     }
 
-    private void OnTriggerExit2D(Collider2D trigger)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (trigger.CompareTag("Player") && !trigger.isTrigger)
+        Debug.Log("Player Exited");
+        if (other.CompareTag("Player") && !other.isTrigger)
         {
-            cineCam.SetActive(false);
+            
+            virtualCam.SetActive(false);
         }
     }
 
