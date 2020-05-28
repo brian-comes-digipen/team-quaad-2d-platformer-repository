@@ -5,30 +5,39 @@ public class PlayerController : MonoBehaviour
 {
     #region Private Fields
 
-    private BoxCollider2D boxCol;
+    private static float plrHeight;
 
-    private bool isDead;
+    private static float plrOffset;
 
-    private bool jumpCooldown;
-    
-    private bool isWallGrabbing;
+    private CapsuleCollider2D capCol2D;
 
-    private float fallDelayLeft = 0;
-
-    private Rigidbody2D rb2D;
+    private BoxCollider2D boxCol2D;
 
     private Collision col;
 
+    private float fallDelayLeft = 0;
 
+    private bool isCrouching = false;
+
+    private bool isDead = false;
+
+    private bool isWallGrabbing = false;
+
+    private bool isPunching = false;
+
+    private Rigidbody2D rb2D;
+
+    private SpriteRenderer spr;
+
+    private Vector2 vel;
+
+    private GameObject hitBoxPunch;
+
+    private Animator ani;
 
     #endregion Private Fields
 
     #region Public Fields
-
-    [Header("?")]
-    public static float playerHeight;
-
-    public static float playerOffset;
 
     [Header("Abilities")]
     public bool CanCrouch = false;
@@ -49,11 +58,9 @@ public class PlayerController : MonoBehaviour
 
     public bool CanWallGrab = false;
 
-    public bool CanWallJump;
+    public bool CanWallJump = false;
 
-    public bool CanWallSlide;
-    
-    bool flipX;
+    public bool CanWallSlide = false;
 
     [Header("Items")]
     public bool HasFlashlight = false;
@@ -64,62 +71,107 @@ public class PlayerController : MonoBehaviour
 
     public bool HasKeyYellow = false;
 
+    [Header("Stats")]
+    public int health = 6;
+
+    public float jumpHeight = 4.5f;
+
+    public int jumpsLeft = 1;
+
+    public int livesLeft = 3;
+
+    public float climbSpeed = 2.5f;
+
+    public float fallDelay = 0.2f;
+
+    public float fallMultiplier = 1.5f;
+
+    public float fallSpeed = 3f;
+
     [Header("Other Stuff")]
     public Vector2 respawnPos;
-
-    public GameObject hitBoxPunch = null;
-
-    public Animator myAnimator;
 
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
 
-    [Header("Stats")]
-    public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
-
-    public int livesLeft = 3;
-    
-    public float jumpHeight = 4.5f;
-
-    public float fallMultiplier = 1.5f;
-
-    public int jumpsLeft = 1;
-
+    // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
     //public float jumpVelocity;
 
     public float walkSpeed = 5f;
-
-    public float climbSpeed = 2.5f;
-
-    public float fallSpeed = 3f;
-
-    public float fallDelay = 0.2f;
-
-    Vector2 vel;
-
-    SpriteRenderer sr;
 
     #endregion Public Fields
 
     #region Private Methods
 
-
-    private void WallClimb()
+    private void AnimateSprite()
     {
-        //Wall Grab
-        if (CanWallGrab && col.onWall && Input.GetKey(KeyCode.LeftShift))
+        ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
+        ani.SetFloat("vSpeed", Mathf.Abs(vel.x));
+        ani.SetBool("isCrouching", false);
+    }
+
+    private void Crouch()
+    {
+        if (!isWallGrabbing)
         {
-            isWallGrabbing = true;
-            jumpsLeft = 1;
-            rb2D.gravityScale = 0;
-        }
-        else
-        {
-            isWallGrabbing = false;
-            rb2D.gravityScale = 1;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                capCol2D.size = new Vector3(capCol2D.size.x, plrHeight / 2.5f);
+                capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset - plrHeight / 4.2f);
+
+                //ChangeState(AnimationState.Crouch);
+            }
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                capCol2D.size = new Vector3(capCol2D.size.x, plrHeight);
+                capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset);
+
+                //ChangeState(AnimationState.Walk);
+            }
         }
     }
-    
+
+    private void Jump()
+    {
+        if (!isWallGrabbing)
+        {
+            vel = rb2D.velocity;
+
+            if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
+            {
+                vel = Vector2.up * jumpHeight;
+                jumpsLeft--;
+            }
+            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+            {
+                if (CanJumpTwice)
+                    jumpsLeft = 2;
+                else
+                    jumpsLeft = 1;
+            }
+
+            if (rb2D.velocity.y < 0)
+            {
+                if (col.onWall)
+                {
+                    fallDelayLeft -= Time.deltaTime;
+                    if (fallDelayLeft <= 0)
+                        vel.y = -fallSpeed;
+                }
+                else
+                {
+                    vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                }
+            }
+            else
+            {
+                fallDelayLeft = fallDelay;
+            }
+
+            rb2D.velocity = vel;
+        }
+    }
+
     private void Movement()
     {
         vel = rb2D.velocity;
@@ -146,8 +198,6 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            CanMove = true;
-
             // Sets the RigidBody's velocity equal to our own velocity
 
             // Left and Right Controls
@@ -155,104 +205,27 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 vel.x = walkSpeed;
-                myAnimator.SetFloat("Speed", Mathf.Abs(walkSpeed));
+                transform.localScale = new Vector2(1, 1); // Setting the scale affects the punch hitbox too, previously the sprite was just being flipped
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 vel.x = -walkSpeed;
-                myAnimator.SetFloat("Speed", Mathf.Abs(walkSpeed));
+                transform.localScale = new Vector2(-1, 1);
             }
 
             // stop it from creeping forever, adds delay when movement is 0/null
             if (Mathf.Abs(vel.x) <= walkSpeed / 7)
             {
                 vel.x = 0;
-                myAnimator.SetFloat("Speed", 0);
             }
             else
             {
                 vel.x = vel.x / 2;
-             
             }
         }
 
         // Sets our own velocity equal to the value of the Rigidbody velocity
         rb2D.velocity = vel;
-    }
-
-    private void Jump()
-    {
-        if (!isWallGrabbing)
-        {
-            vel = rb2D.velocity;
-
-            if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
-            {
-                vel = Vector2.up * jumpHeight;
-                jumpsLeft--;
-            }
-            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
-            {
-                if (CanJumpTwice)
-                    jumpsLeft = 2;
-                else
-                    jumpsLeft = 1;
-            }
-
-            if (rb2D.velocity.y < 0)
-            {
-                if(col.onWall)
-                {
-                    fallDelayLeft -= Time.deltaTime;
-                    if(fallDelayLeft <= 0)
-                        vel.y = -fallSpeed;
-                }
-                else
-                {
-                    vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-                }
-            }
-            else
-            {
-                fallDelayLeft = fallDelay;
-            }
-            
-            rb2D.velocity = vel;
-        }
-    }
-
-    private void Crouch()
-    {
-        if (!isWallGrabbing)
-        {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                boxCol.size = new Vector3(boxCol.size.x, playerHeight / 2.5f);
-                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset - playerHeight / 4.2f);
-
-                //ChangeState(AnimationState.Crouch);
-            }
-            if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                boxCol.size = new Vector3(boxCol.size.x, playerHeight);
-                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset);
-
-                //ChangeState(AnimationState.Walk);
-            }
-        }
-    }
-    
-    private void Respawn()
-    {
-        if (transform.position.y <= respawnYValue)
-        {
-            isDead = true;
-        }
-        if(isDead)
-        {
-            transform.position = respawnPos;
-            isDead = false;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -261,25 +234,40 @@ public class PlayerController : MonoBehaviour
         {
             // Item pickup
         }
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy")
         {
             health--;
             isDead = true;
         }
     }
 
+    private void Respawn()
+    {
+        if (transform.position.y <= respawnYValue)
+        {
+            isDead = true;
+        }
+        if (isDead)
+        {
+            transform.position = respawnPos;
+            isDead = false;
+        }
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        boxCol = GetComponent<BoxCollider2D>();
+        boxCol2D = GetComponent<BoxCollider2D>();
+        capCol2D = GetComponent<CapsuleCollider2D>();
         col = GetComponent<Collision>();
-        myAnimator = GetComponent<Animator>();
-        playerHeight = boxCol.size.y;
-        playerOffset = boxCol.offset.y;
+        ani = GetComponent<Animator>();
+        plrHeight = capCol2D.size.y;
+        plrOffset = capCol2D.offset.y;
         respawnPos = transform.position;
-
+        spr = GetComponent<SpriteRenderer>();
+        if (hitBoxPunch == null)
+            hitBoxPunch = gameObject.GetComponentInChildren<Transform>().gameObject;
     }
 
     // Update is called once per frame
@@ -288,22 +276,44 @@ public class PlayerController : MonoBehaviour
         WallClimb();
         Movement();
         Jump();
+        Punch();
         Crouch();
         Respawn();
+    }
 
-        sr = GetComponent<SpriteRenderer>();
-
-        bool flipX = vel.x < 0;
-        if (flipX != sr.flipX && vel.x != 0)
+    private void Punch()
+    {
+        if (CanPunch && Input.GetKeyDown(KeyCode.X) && !isPunching)
         {
-            sr.flipX = flipX;
-            //1.76423455f * 2 : -1.76423455f * 2;   <- Used when center is the top left corner
-            float adjustX = flipX ? 0 : 0;
-            sr.transform.Translate(adjustX, 0, 0);
-
+            StartCoroutine(PunchCoroutine());
         }
     }
 
+    private void WallClimb()
+    {
+        //Wall Grab
+        if (CanWallGrab && col.onWall && Input.GetKey(KeyCode.LeftShift))
+        {
+            isWallGrabbing = true;
+            jumpsLeft = 1;
+            rb2D.gravityScale = 0;
+        }
+        else
+        {
+            isWallGrabbing = false;
+            rb2D.gravityScale = 1;
+        }
+    }
+
+    // PUNCHING IS BROKEN??? IT MAKES THE PLAYER DISAPPEAR??? WHAT THE HELL IS HAPPENING
+    private IEnumerator PunchCoroutine()
+    {
+        isPunching = true;
+        hitBoxPunch.SetActive(true);
+        yield return new WaitForSeconds(.25f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
+        hitBoxPunch.SetActive(false);
+        isPunching = false;
+    }
 
     #endregion Private Methods
 }
