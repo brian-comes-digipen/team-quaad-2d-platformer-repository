@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Collision col;
 
 
+
     #endregion Private Fields
 
     #region Public Fields
@@ -67,6 +68,8 @@ public class PlayerController : MonoBehaviour
     public Vector2 respawnPos;
 
     public GameObject hitBoxPunch = null;
+
+    public Animator myAnimator;
 
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
@@ -152,20 +155,24 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 vel.x = walkSpeed;
+                myAnimator.SetFloat("Speed", Mathf.Abs(walkSpeed));
             }
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 vel.x = -walkSpeed;
+                myAnimator.SetFloat("Speed", Mathf.Abs(walkSpeed));
             }
 
             // stop it from creeping forever, adds delay when movement is 0/null
             if (Mathf.Abs(vel.x) <= walkSpeed / 7)
             {
                 vel.x = 0;
+                myAnimator.SetFloat("Speed", 0);
             }
             else
             {
                 vel.x = vel.x / 2;
+             
             }
         }
 
@@ -268,6 +275,7 @@ public class PlayerController : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         boxCol = GetComponent<BoxCollider2D>();
         col = GetComponent<Collision>();
+        myAnimator = GetComponent<Animator>();
         playerHeight = boxCol.size.y;
         playerOffset = boxCol.offset.y;
         respawnPos = transform.position;
