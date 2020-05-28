@@ -15,11 +15,13 @@ public class PlayerController : MonoBehaviour
 
     private Collision col;
 
+    private bool isWallGrabbing;
+
     #endregion Private Fields
 
     #region Public Fields
 
-    [Header("")]
+    [Header("?")]
     public static float playerHeight;
 
     public static float playerOffset;
@@ -41,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
     public bool CanWallClimb = false;
 
-    public bool CanWallGrab;
+    public bool CanWallGrab = false;
 
     public bool CanWallJump;
 
@@ -94,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void Crouch()
     {
-        if (!CanWallGrab)
+        if (!isWallGrabbing)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -115,19 +117,18 @@ public class PlayerController : MonoBehaviour
     
     private void Jump()
     {
-        if (!CanWallGrab)
+        if (!isWallGrabbing)
         {
-
             Vector2 vel = rb2D.velocity;
 
             //Jump controls, implements double jump restraints by decreasing the "counter" each use
-            if (Input.GetKeyDown(KeyCode.UpArrow) && (jumpsLeft > 0))
+            if (CanJump && Input.GetKeyDown(KeyCode.UpArrow) && (jumpsLeft > 0))
             {
                 //Height is multiplied to compensate for the increase of negative velocity
                 vel.y = jumpHeight * 1.4f;
                 jumpsLeft--;
             }
-            //When the player touches a layer (ground) the double jump cap is reset
+            // If y velocity is zero and if the player is touching a layer, assume we are on the ground and reset jump counter
             else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
             {
                 if (CanJumpTwice)
@@ -144,6 +145,8 @@ public class PlayerController : MonoBehaviour
             }
 
             rb2D.velocity = vel;
+
+            // old code???
             /*Vector2 vel = rb2D.velocity;
 
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
@@ -179,7 +182,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 vel = rb2D.velocity;
 
-        if (CanWallGrab)
+        if (isWallGrabbing)
         {
             //While latched to a wall, player cannot move left or right
             vel.x = 0;
@@ -273,22 +276,16 @@ public class PlayerController : MonoBehaviour
     private void WallClimb()
     {
         //Wall Grab
-        if (col.onWall && Input.GetKey(KeyCode.LeftShift))
+        if (CanWallGrab && col.onWall && Input.GetKey(KeyCode.LeftShift))
         {
-            CanWallGrab = true;
-        }
-
-        if (!col.onWall || !Input.GetKey(KeyCode.LeftShift))
-        {
-            CanWallGrab = false;
-        }
-        if (CanWallGrab)
-        {
+            isWallGrabbing = true;
             rb2D.gravityScale = 0;
-
-            //rb2D.velocity = new Vector2(rb2D.velocity.x, 0);
         }
-        else rb2D.gravityScale = 1;
+        else
+        {
+            isWallGrabbing = false;
+            rb2D.gravityScale = 1;
+        }
     }
 
     #endregion Private Methods

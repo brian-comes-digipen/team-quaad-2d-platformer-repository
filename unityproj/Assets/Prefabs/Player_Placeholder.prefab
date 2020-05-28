@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9d29e87572f4c954b8d629f0f5e73107, type: 3}
-  m_Color: {r: 0, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -206,7 +206,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9d29e87572f4c954b8d629f0f5e73107, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -297,8 +297,11 @@ MonoBehaviour:
   health: 6
   livesLeft: 3
   jumpHeight: 4
+  fallMultiplier: 2.5
+  lowJumpMultipler: 2
   jumpsLeft: 1
   walkSpeed: 6
+  climbSpeed: 3
   sprintSpeed: 10
 --- !u!114 &1723120936
 MonoBehaviour:
