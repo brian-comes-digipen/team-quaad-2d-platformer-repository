@@ -10,23 +10,13 @@ public class EnemyBehavior : MonoBehaviour
 
     #region Public Fields
 
-    public EnemyTypes enemyType = EnemyTypes.Dummy;
+    public float moveSpeed = 1f;
+    public Vector3 velocity;
+    public bool onWall;
 
     #endregion Public Fields
 
     #region Public Enums
-
-    public enum EnemyTypes
-    {
-        Dummy = -1,
-
-        Ground,
-
-        Wall,
-
-        Air
-    }
-
     #endregion Public Enums
 
     #region Private Methods
@@ -35,12 +25,46 @@ public class EnemyBehavior : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        velocity = rb2D.velocity;
     }
 
     // Update is called once per frame
     private void Update()
     {
+        Ground();
+        Wall();
+    }
+    
+
+private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy Wall")
+        {
+            //print("Collided");
+            moveSpeed = -moveSpeed;
+        }
+    }
+
+    private void Ground()
+    {
+        if(!onWall)
+        {
+            velocity.x = moveSpeed;
+            rb2D.velocity = velocity;
+        }
+    }
+
+    private void Wall()
+    {
+        if (onWall)
+        {
+            rb2D.gravityScale = 0;
+            velocity.y = moveSpeed;
+            rb2D.velocity = velocity;
+            print("test");
+        }
     }
 
     #endregion Private Methods
+
 }

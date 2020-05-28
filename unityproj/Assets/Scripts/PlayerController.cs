@@ -10,12 +10,15 @@ public class PlayerController : MonoBehaviour
     private bool isDead;
 
     private bool jumpCooldown;
+    
+    private bool isWallGrabbing;
+
+    private float fallDelayLeft = 0;
 
     private Rigidbody2D rb2D;
 
     private Collision col;
 
-    private bool isWallGrabbing;
 
     #endregion Private Fields
 
@@ -49,8 +52,6 @@ public class PlayerController : MonoBehaviour
 
     public bool CanWallSlide;
 
-    public float fallSpeed = 2f;
-
     [Header("Items")]
     public bool HasFlashlight = false;
 
@@ -76,9 +77,7 @@ public class PlayerController : MonoBehaviour
     [Range(1, 5)]
     public float jumpHeight;
 
-    public float fallMultiplier = 2.5f;
-
-    public float lowJumpMultipler = 2f;
+    public float fallMultiplier = 1.5f;
 
     public int jumpsLeft = 1;
 
@@ -86,64 +85,33 @@ public class PlayerController : MonoBehaviour
 
     public float walkSpeed = 5f;
 
-    public float climbSpeed = 3f;
+    public float climbSpeed = 2.5f;
 
-    public float sprintSpeed = 5f;
+    public float fallSpeed = 3f;
+
+    public float fallDelay = 0.2f;
 
     #endregion Public Fields
 
     #region Private Methods
 
-    private void Crouch()
+
+    private void WallClimb()
     {
-        if (!isWallGrabbing)
+        //Wall Grab
+        if (CanWallGrab && col.onWall && Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                boxCol.size = new Vector3(boxCol.size.x, playerHeight / 2);
-                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset - playerHeight / 4);
-
-                //ChangeState(AnimationState.Crouch);
-            }
-            if (Input.GetKeyUp(KeyCode.DownArrow))
-            {
-                boxCol.size = new Vector3(boxCol.size.x, playerHeight);
-                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset);
-
-                //ChangeState(AnimationState.Walk);
-            }
+            isWallGrabbing = true;
+            jumpsLeft = 1;
+            rb2D.gravityScale = 0;
+        }
+        else
+        {
+            isWallGrabbing = false;
+            rb2D.gravityScale = 1;
         }
     }
     
-    private void Jump()
-    {
-        if (!isWallGrabbing)
-        {
-            Vector2 vel = rb2D.velocity;
-
-            if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
-            {
-                vel = Vector2.up * jumpHeight;
-                //vel.y = jumpHeight * 1.4f;
-                jumpsLeft--;
-            }
-            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
-            {
-                if (CanJumpTwice)
-                    jumpsLeft = 2;
-                else
-                    jumpsLeft = 1;
-            }
-
-            if (rb2D.velocity.y < 0)
-            {
-                vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-            }
-            
-            rb2D.velocity = vel;
-        }
-    }
-
     private void Movement()
     {
         Vector2 vel = rb2D.velocity;
@@ -200,23 +168,96 @@ public class PlayerController : MonoBehaviour
         rb2D.velocity = vel;
     }
 
+    private void Jump()
+    {
+        if (!isWallGrabbing)
+        {
+            Vector2 vel = rb2D.velocity;
+
+            if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
+            {
+                vel = Vector2.up * jumpHeight;
+                //vel.y = jumpHeight * 1.4f;
+                jumpsLeft--;
+            }
+            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+            {
+                if (CanJumpTwice)
+                    jumpsLeft = 2;
+                else
+                    jumpsLeft = 1;
+            }
+
+            if (rb2D.velocity.y < 0)
+            {
+                if(col.onWall)
+                {
+                    //jumpsLeft = 1;
+                    fallDelayLeft -= Time.deltaTime;
+                    if(fallDelayLeft <= 0)
+                        vel.y = -fallSpeed;
+                }
+                else
+                {
+                    vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                }
+            }
+            else
+            {
+                fallDelayLeft = fallDelay;
+            }
+            
+            rb2D.velocity = vel;
+        }
+    }
+
+    private void Crouch()
+    {
+        if (!isWallGrabbing)
+        {
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                boxCol.size = new Vector3(boxCol.size.x, playerHeight / 2);
+                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset - playerHeight / 4);
+
+                //ChangeState(AnimationState.Crouch);
+            }
+            if (Input.GetKeyUp(KeyCode.DownArrow))
+            {
+                boxCol.size = new Vector3(boxCol.size.x, playerHeight);
+                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset);
+
+                //ChangeState(AnimationState.Walk);
+            }
+        }
+    }
+    
+    private void Respawn()
+    {
+        if (transform.position.y <= respawnYValue)
+        {
+            isDead = true;
+        }
+        if(isDead)
+        {
+            transform.position = respawnPos;
+            isDead = false;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.GetComponent<ItemPickup>() != null)
         {
             // Item pickup
         }
-    }
-
-    private void Respawn()
-    {
-        if (transform.position.y <= respawnYValue)
+        if (collision.gameObject.tag == "Enemy")
         {
+            health--;
             isDead = true;
-            transform.position = respawnPos;
-            isDead = false;
         }
     }
+
 
     // Start is called before the first frame update
     private void Start()
@@ -232,27 +273,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        WallClimb();
         Movement();
         Jump();
         Crouch();
-        WallClimb();
         Respawn();
     }
 
-    private void WallClimb()
-    {
-        //Wall Grab
-        if (CanWallGrab && col.onWall && Input.GetKey(KeyCode.LeftShift))
-        {
-            isWallGrabbing = true;
-            rb2D.gravityScale = 0;
-        }
-        else
-        {
-            isWallGrabbing = false;
-            rb2D.gravityScale = 1;
-        }
-    }
 
     #endregion Private Methods
 }
