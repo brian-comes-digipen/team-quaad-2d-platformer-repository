@@ -121,37 +121,9 @@ public class PlayerController : MonoBehaviour
         {
             Vector2 vel = rb2D.velocity;
 
-            //Jump controls, implements double jump restraints by decreasing the "counter" each use
-            if (CanJump && Input.GetKeyDown(KeyCode.UpArrow) && (jumpsLeft > 0))
-            {
-                //Height is multiplied to compensate for the increase of negative velocity
-                vel.y = jumpHeight * 1.4f;
-                jumpsLeft--;
-            }
-            // If y velocity is zero and if the player is touching a layer, assume we are on the ground and reset jump counter
-            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
-            {
-                if (CanJumpTwice)
-                    jumpsLeft = 2;
-                else
-                    jumpsLeft = 1;
-            }
-            //Increases down-ward momentum to simulate weight
-            if (rb2D.velocity.y < 0 && rb2D.velocity.y > -35f)
-            {
-                vel.y *= 1 + (.6f * Time.deltaTime);
-                //myRB.velocity += Vector2.up * Physics2D.gravity.y * (weight - 1) * Time.deltaTime;
-
-            }
-
-            rb2D.velocity = vel;
-
-            // old code???
-            /*Vector2 vel = rb2D.velocity;
-
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
-                rb2D.velocity = Vector2.up * jumpHeight;
+                vel = Vector2.up * jumpHeight;
                 //vel.y = jumpHeight * 1.4f;
                 jumpsLeft--;
             }
@@ -165,16 +137,10 @@ public class PlayerController : MonoBehaviour
 
             if (rb2D.velocity.y < 0)
             {
-                vel.y = -fallSpeed;
-                rb2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-                //vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
-            }
-            else if(rb2D.velocity.y > 0 && !Input.GetKeyDown(KeyCode.UpArrow) || !Input.GetKeyDown(KeyCode.Space) || !Input.GetKeyDown(KeyCode.Z))
-            {
-                rb2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultipler - 1) * Time.deltaTime;
+                vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
             }
             
-            rb2D.velocity = vel;*/
+            rb2D.velocity = vel;
         }
     }
 

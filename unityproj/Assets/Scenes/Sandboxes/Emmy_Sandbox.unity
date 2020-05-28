@@ -7753,8 +7753,8 @@ MonoBehaviour:
   CanPunch: 0
   CanPushPull: 0
   CanSprint: 0
-  CanWallClimb: 0
-  CanWallGrab: 0
+  CanWallClimb: 1
+  CanWallGrab: 1
   CanWallJump: 0
   CanWallSlide: 0
   fallSpeed: 2
