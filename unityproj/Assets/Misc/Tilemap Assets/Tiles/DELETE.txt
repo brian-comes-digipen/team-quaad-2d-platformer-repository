@@ -1,2 +1,0 @@
-DELETE THIS FROM THE FILE ONCE IT HAS CONTENTS.
-This is so we can transfer "empty" files across git.
