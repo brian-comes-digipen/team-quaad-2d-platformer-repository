@@ -71,11 +71,20 @@ public class PlayerController : MonoBehaviour
 
     public int livesLeft = 3;
 
-    public float jumpHeight = 3f;
+    [Range(1, 5)]
+    public float jumpHeight;
+
+    public float fallMultiplier = 2.5f;
+
+    public float lowJumpMultipler = 2f;
 
     public int jumpsLeft = 1;
 
-    public float walkSpeed = 3f;
+    //public float jumpVelocity;
+
+    public float walkSpeed = 5f;
+
+    public float climbSpeed = 3f;
 
     public float sprintSpeed = 5f;
 
@@ -103,41 +112,66 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
-    private IEnumerator DoubleJumpCoolDown()
-    {
-        jumpCooldown = true;
-        yield return new WaitForSeconds(Time.deltaTime * 8);
-        jumpCooldown = false;
-    }
-
+    
     private void Jump()
     {
         if (!CanWallGrab)
         {
+
             Vector2 vel = rb2D.velocity;
 
-            if (CanJump && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.Z)) && jumpsLeft > 0 && !jumpCooldown)
+            //Jump controls, implements double jump restraints by decreasing the "counter" each use
+            if (Input.GetKeyDown(KeyCode.UpArrow) && (jumpsLeft > 0))
             {
+                //Height is multiplied to compensate for the increase of negative velocity
                 vel.y = jumpHeight * 1.4f;
                 jumpsLeft--;
-                StartCoroutine(DoubleJumpCoolDown());
+            }
+            //When the player touches a layer (ground) the double jump cap is reset
+            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+            {
+                if (CanJumpTwice)
+                    jumpsLeft = 2;
+                else
+                    jumpsLeft = 1;
+            }
+            //Increases down-ward momentum to simulate weight
+            if (rb2D.velocity.y < 0 && rb2D.velocity.y > -35f)
+            {
+                vel.y *= 1 + (.6f * Time.deltaTime);
+                //myRB.velocity += Vector2.up * Physics2D.gravity.y * (weight - 1) * Time.deltaTime;
+
+            }
+
+            rb2D.velocity = vel;
+            /*Vector2 vel = rb2D.velocity;
+
+            if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
+            {
+                rb2D.velocity = Vector2.up * jumpHeight;
+                //vel.y = jumpHeight * 1.4f;
+                jumpsLeft--;
             }
             else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
             {
-                StopCoroutine(DoubleJumpCoolDown());
                 if (CanJumpTwice)
                     jumpsLeft = 2;
                 else
                     jumpsLeft = 1;
             }
 
-            if (rb2D.velocity.y < 0 && !col.onGround)
+            if (rb2D.velocity.y < 0)
+            {
                 vel.y = -fallSpeed;
-
-            //vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
-
-            rb2D.velocity = vel;
+                rb2D.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+                //vel.y *= 1 + .6f * Time.deltaTime * rb2D.mass;
+            }
+            else if(rb2D.velocity.y > 0 && !Input.GetKeyDown(KeyCode.UpArrow) || !Input.GetKeyDown(KeyCode.Space) || !Input.GetKeyDown(KeyCode.Z))
+            {
+                rb2D.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultipler - 1) * Time.deltaTime;
+            }
+            
+            rb2D.velocity = vel;*/
         }
     }
 
@@ -154,11 +188,11 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKey(KeyCode.UpArrow))
             {
-                vel.y = walkSpeed;
+                vel.y = climbSpeed;
             }
             else if (Input.GetKey(KeyCode.DownArrow))
             {
-                vel.y = -walkSpeed;
+                vel.y = -climbSpeed;
             }
             else
             {

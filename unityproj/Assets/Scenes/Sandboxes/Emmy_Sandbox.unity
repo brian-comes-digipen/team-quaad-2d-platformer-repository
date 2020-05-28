@@ -7690,32 +7690,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanCrouch: 0
   CanJump: 1
-  CanJumpTwice: 0
+  CanJumpTwice: 1
   CanMove: 1
   CanPunch: 0
   CanPushPull: 0
   CanSprint: 0
   CanWallClimb: 0
-  wallGrab: 0
-  wallJump: 0
-  wallSlide: 0
+  CanWallGrab: 0
+  CanWallJump: 0
+  CanWallSlide: 0
+  fallSpeed: 2
   HasFlashlight: 0
   HasKeyBlue: 0
   HasKeyRed: 0
   HasKeyYellow: 0
-  health: 6
-  hitBoxFeet: {fileID: 0}
-  hitBoxPunch: {fileID: 0}
-  hitBoxSideL: {fileID: 0}
-  hitBoxSideR: {fileID: 0}
-  collision: {fileID: 0}
-  jumpHeight: 3
-  jumpsLeft: 1
-  remainingLives: 3
   respawnPos: {x: 0, y: 0}
+  hitBoxPunch: {fileID: 0}
   respawnYValue: -5
+  health: 6
+  livesLeft: 3
+  jumpHeight: 3
+  fallMultiplier: 2.5
+  lowJumpMultipler: 2
+  jumpsLeft: 1
+  walkSpeed: 5
+  climbSpeed: 3
   sprintSpeed: 5
-  walkSpeed: 3
 --- !u!61 &927567615
 BoxCollider2D:
   m_ObjectHideFlags: 0
