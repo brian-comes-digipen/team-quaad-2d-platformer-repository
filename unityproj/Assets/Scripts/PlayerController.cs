@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
     private bool isDead = false;
 
     private bool isWallGrabbing = false;
+
+    private bool isPunching = false;
 
     private Rigidbody2D rb2D;
 
@@ -273,8 +276,17 @@ public class PlayerController : MonoBehaviour
         WallClimb();
         Movement();
         Jump();
+        Punch();
         Crouch();
         Respawn();
+    }
+
+    private void Punch()
+    {
+        if (CanPunch && Input.GetKeyDown(KeyCode.X) && !isPunching)
+        {
+            StartCoroutine(PunchCoroutine());
+        }
     }
 
     private void WallClimb()
@@ -291,6 +303,15 @@ public class PlayerController : MonoBehaviour
             isWallGrabbing = false;
             rb2D.gravityScale = 1;
         }
+    }
+
+    private IEnumerator PunchCoroutine()
+    {
+        isPunching = true;
+        hitBoxPunch.SetActive(true);
+        yield return new WaitForSeconds(.25f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
+        hitBoxPunch.SetActive(false);
+        isPunching = false;
     }
 
     #endregion Private Methods
