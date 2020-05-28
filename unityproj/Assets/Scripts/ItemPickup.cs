@@ -18,7 +18,7 @@ public class ItemPickup : MonoBehaviour
 
     public float itemRespawnDelaySeconds = 1.0f;
 
-    public Vector2 respawnPos = new Vector2(0, 0);
+    public Vector2 plrRespawnPos = new Vector2(0, 0);
 
     #endregion Public Fields
 
@@ -45,10 +45,14 @@ public class ItemPickup : MonoBehaviour
 
         EnableWallClimb,
 
-        // Keys & Items
-        KeyBlue,
+        EnableWallJump,
 
+        EnableWallSlide,
+
+        // Keys & Items
         EnableFlashlight,
+
+        KeyBlue,
 
         KeyRed,
 
@@ -83,70 +87,78 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController pC = other.GetComponent<PlayerController>();
+        PlayerController plrC = other.GetComponent<PlayerController>();
 
-        if (pC != null)
+        if (plrC != null)
         {
             switch (itemType)
             {
                 case ItemTypes.EnableCrouch:
-                    pC.CanCrouch = true;
+                    plrC.CanCrouch = true;
                     break;
 
                 case ItemTypes.EnableJump:
-                    pC.CanJump = true;
+                    plrC.CanJump = true;
                     break;
 
                 case ItemTypes.EnableDblJump:
-                    pC.CanJumpTwice = true;
+                    plrC.CanJumpTwice = true;
                     break;
 
                 case ItemTypes.EnablePunch:
-                    pC.CanPunch = true;
+                    plrC.CanPunch = true;
                     break;
 
                 case ItemTypes.EnableSprint:
-                    pC.CanSprint = true;
+                    plrC.CanSprint = true;
                     break;
 
                 case ItemTypes.EnablePushPull:
-                    pC.CanPushPull = true;
+                    plrC.CanPushPull = true;
                     break;
 
                 case ItemTypes.EnableWallClimb:
-                    pC.CanWallClimb = true;
+                    plrC.CanWallClimb = true;
+                    break;
+
+                case ItemTypes.EnableWallJump:
+                    plrC.CanWallJump = true;
+                    break;
+
+                case ItemTypes.EnableWallSlide:
+                    plrC.CanWallSlide = true;
                     break;
 
                 case ItemTypes.KeyBlue:
-                    pC.HasKeyBlue = true;
+                    plrC.HasKeyBlue = true;
                     break;
 
                 case ItemTypes.KeyRed:
-                    pC.HasKeyRed = true;
+                    plrC.HasKeyRed = true;
                     break;
 
                 case ItemTypes.KeyYellow:
-                    pC.HasKeyYellow = true;
+                    plrC.HasKeyYellow = true;
                     break;
 
                 case ItemTypes.EnableFlashlight:
-                    pC.HasFlashlight = true;
+                    plrC.HasFlashlight = true;
                     break;
 
                 case ItemTypes.Health:
-                    ++pC.health;
+                    ++plrC.health;
                     break;
 
                 case ItemTypes.ExtraLife:
-                    ++pC.livesLeft;
+                    ++plrC.livesLeft;
                     break;
 
                 case ItemTypes.JumpRefill:
-                    ++pC.jumpsLeft;
+                    ++plrC.jumpsLeft;
                     break;
 
                 case ItemTypes.SetRespawnPoint:
-                    pC.respawnPos = respawnPos;
+                    plrC.respawnPos = plrRespawnPos;
                     break;
 
                 default:
