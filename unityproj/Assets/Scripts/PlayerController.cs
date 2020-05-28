@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     public bool CanWallJump;
 
     public bool CanWallSlide;
+    
+    bool flipX;
 
     [Header("Items")]
     public bool HasFlashlight = false;
@@ -73,9 +75,8 @@ public class PlayerController : MonoBehaviour
     public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
 
     public int livesLeft = 3;
-
-    [Range(1, 5)]
-    public float jumpHeight;
+    
+    public float jumpHeight = 4.5f;
 
     public float fallMultiplier = 1.5f;
 
@@ -90,6 +91,10 @@ public class PlayerController : MonoBehaviour
     public float fallSpeed = 3f;
 
     public float fallDelay = 0.2f;
+
+    Vector2 vel;
+
+    SpriteRenderer sr;
 
     #endregion Public Fields
 
@@ -114,7 +119,7 @@ public class PlayerController : MonoBehaviour
     
     private void Movement()
     {
-        Vector2 vel = rb2D.velocity;
+        vel = rb2D.velocity;
 
         if (isWallGrabbing)
         {
@@ -172,12 +177,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!isWallGrabbing)
         {
-            Vector2 vel = rb2D.velocity;
+            vel = rb2D.velocity;
 
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
                 vel = Vector2.up * jumpHeight;
-                //vel.y = jumpHeight * 1.4f;
                 jumpsLeft--;
             }
             else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
@@ -192,7 +196,6 @@ public class PlayerController : MonoBehaviour
             {
                 if(col.onWall)
                 {
-                    //jumpsLeft = 1;
                     fallDelayLeft -= Time.deltaTime;
                     if(fallDelayLeft <= 0)
                         vel.y = -fallSpeed;
@@ -217,8 +220,8 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                boxCol.size = new Vector3(boxCol.size.x, playerHeight / 2);
-                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset - playerHeight / 4);
+                boxCol.size = new Vector3(boxCol.size.x, playerHeight / 2.5f);
+                boxCol.offset = new Vector3(boxCol.offset.x, playerOffset - playerHeight / 4.2f);
 
                 //ChangeState(AnimationState.Crouch);
             }
@@ -268,6 +271,7 @@ public class PlayerController : MonoBehaviour
         playerHeight = boxCol.size.y;
         playerOffset = boxCol.offset.y;
         respawnPos = transform.position;
+
     }
 
     // Update is called once per frame
@@ -278,6 +282,18 @@ public class PlayerController : MonoBehaviour
         Jump();
         Crouch();
         Respawn();
+
+        sr = GetComponent<SpriteRenderer>();
+
+        bool flipX = vel.x < 0;
+        if (flipX != sr.flipX && vel.x != 0)
+        {
+            sr.flipX = flipX;
+            //1.76423455f * 2 : -1.76423455f * 2;   <- Used when center is the top left corner
+            float adjustX = flipX ? 0 : 0;
+            sr.transform.Translate(adjustX, 0, 0);
+
+        }
     }
 
 
