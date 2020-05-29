@@ -685,10 +685,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1749784956674967136, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f05cef7934774fa4fadf59dad0960070, type: 2}
     - target: {fileID: 2102372742533647123, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.22
+      value: -0.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2102372742533647123, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
@@ -759,6 +769,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211215952548601890, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 5331881556300634429, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
