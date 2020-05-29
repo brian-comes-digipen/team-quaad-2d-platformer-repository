@@ -275,19 +275,17 @@ MonoBehaviour:
   HasKeyBlue: 0
   HasKeyRed: 0
   HasKeyYellow: 0
-  respawnPos: {x: 0, y: 0}
-  hitBoxPunch: {fileID: 0}
-  myAnimator: {fileID: 0}
-  respawnYValue: -5
   health: 6
-  livesLeft: 3
   jumpHeight: 5
-  fallMultiplier: 1.2
   jumpsLeft: 1
-  walkSpeed: 13
+  livesLeft: 3
   climbSpeed: 2.5
-  fallSpeed: 3
   fallDelay: 0.2
+  fallMultiplier: 1.2
+  fallSpeed: 3
+  respawnPos: {x: 0, y: 0}
+  respawnYValue: -5
+  walkSpeed: 13
 --- !u!61 &116993727
 BoxCollider2D:
   m_ObjectHideFlags: 0
