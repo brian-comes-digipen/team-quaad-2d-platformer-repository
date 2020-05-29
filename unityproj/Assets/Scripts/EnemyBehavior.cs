@@ -5,19 +5,16 @@ public class EnemyBehavior : MonoBehaviour
     #region Private Fields
 
     private Rigidbody2D rb2D;
+    private Vector2 vel;
 
     #endregion Private Fields
 
     #region Public Fields
 
     public float moveSpeed = 1f;
-    public Vector3 velocity;
     public bool onWall;
 
     #endregion Public Fields
-
-    #region Public Enums
-    #endregion Public Enums
 
     #region Private Methods
 
@@ -25,44 +22,34 @@ public class EnemyBehavior : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        velocity = rb2D.velocity;
+        vel = rb2D.velocity;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        Ground();
-        Wall();
+        Move();
     }
     
 
-private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy Wall")
+        if (collision.gameObject.layer == 14) // "ENEMYBLOCK" layer
         {
-            //print("Collided");
-            moveSpeed = -moveSpeed;
+            //print("Collided with block, switching direction");
+            moveSpeed *= -1;
         }
+        else if (collision.gameObject.layer == 15) // "PLAYERPUNCH" layer
+            Destroy(gameObject);
     }
 
-    private void Ground()
+    private void Move()
     {
-        if(!onWall)
-        {
-            velocity.x = moveSpeed;
-            rb2D.velocity = velocity;
-        }
-    }
-
-    private void Wall()
-    {
-        if (onWall)
-        {
-            rb2D.gravityScale = 0;
-            velocity.y = moveSpeed;
-            rb2D.velocity = velocity;
-            print("test");
-        }
+        if(onWall)
+            vel.y = moveSpeed;
+        else
+            vel.x = moveSpeed;
+        rb2D.velocity = vel;
     }
 
     #endregion Private Methods
