@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
 
     private CapsuleCollider2D capCol2D;
 
-    private BoxCollider2D boxCol2D;
-
     private Collision col;
 
     private float fallDelayLeft = 0;
@@ -258,7 +256,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        boxCol2D = GetComponent<BoxCollider2D>();
         capCol2D = GetComponent<CapsuleCollider2D>();
         col = GetComponent<Collision>();
         ani = GetComponent<Animator>();
@@ -267,7 +264,7 @@ public class PlayerController : MonoBehaviour
         respawnPos = transform.position;
         spr = GetComponent<SpriteRenderer>();
         if (hitBoxPunch == null)
-            hitBoxPunch = gameObject.GetComponentInChildren<Transform>().gameObject;
+            hitBoxPunch = GameObject.Find("PunchHitbox");
     }
 
     // Update is called once per frame
@@ -279,6 +276,7 @@ public class PlayerController : MonoBehaviour
         Punch();
         Crouch();
         Respawn();
+        AnimateSprite();
     }
 
     private void Punch()
@@ -309,9 +307,11 @@ public class PlayerController : MonoBehaviour
     private IEnumerator PunchCoroutine()
     {
         isPunching = true;
-        hitBoxPunch.SetActive(true);
+        hitBoxPunch.layer = 15;
+        hitBoxPunch.GetComponent<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(.25f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
-        hitBoxPunch.SetActive(false);
+        hitBoxPunch.layer = 12;
+        hitBoxPunch.GetComponent<SpriteRenderer>().enabled = false;
         isPunching = false;
     }
 
