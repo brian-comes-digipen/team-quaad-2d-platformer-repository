@@ -32,11 +32,18 @@ public class PlayerController : MonoBehaviour
 
     private GameObject hitBoxPunch;
 
-    private GameObject flashLight;
+    private GameObject flameBoi;
 
     private Animator ani;
 
     #endregion Private Fields
+
+    #region Internal Fields
+
+    [Header("Other Stuff")]
+    internal Vector3 respawnPos;
+
+    #endregion Internal Fields
 
     #region Public Fields
 
@@ -51,15 +58,15 @@ public class PlayerController : MonoBehaviour
 
     public bool CanPunch = false;
 
-    //public bool CanSprint = false;
+    public bool CanSprint = false;
 
     public bool CanWallClimb = false;
 
-    //public bool CanWallGrab = false;
+    public bool CanWallGrab = false;
 
-    //public bool CanWallJump = false;
+    public bool CanWallJump = false;
 
-    //public bool CanWallSlide = false;
+    public bool CanWallSlide = false;
 
     [Header("Items")]
     public bool HasFlashlight = false;
@@ -87,9 +94,6 @@ public class PlayerController : MonoBehaviour
 
     public float fallSpeed = 3f;
 
-    [Header("Other Stuff")]
-    internal Vector3 respawnPos;
-
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
 
@@ -106,12 +110,13 @@ public class PlayerController : MonoBehaviour
     {
         ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
         ani.SetFloat("vSpeed", vel.y);
+
         //ani.SetBool("isCrouching", false);
     }
 
     private void Crouch()
     {
-        if(CanCrouch && !isWallGrabbing)
+        if (CanCrouch && !isWallGrabbing)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -125,7 +130,6 @@ public class PlayerController : MonoBehaviour
                 capCol2D.size = new Vector3(capCol2D.size.x, plrHeight);
                 capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset);
                 ani.SetBool("isCrouching", false);
-
             }
         }
     }
@@ -150,9 +154,7 @@ public class PlayerController : MonoBehaviour
                     jumpsLeft = 1;
 
                 if (col.onGround)
-                {
                     ani.SetBool("isJumping", false);
-                }
             }
 
             if (rb2D.velocity.y < 0)
@@ -164,17 +166,12 @@ public class PlayerController : MonoBehaviour
                         vel.y = -fallSpeed;
                 }
                 else
-                {
                     vel += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-                }
             }
             else
-            {
                 fallDelayLeft = fallDelay;
-            }
 
             rb2D.velocity = vel;
-
         }
     }
 
@@ -190,17 +187,11 @@ public class PlayerController : MonoBehaviour
             CanWallClimb = true;
 
             if (Input.GetKey(KeyCode.UpArrow))
-            {
                 vel.y = climbSpeed;
-            }
             else if (Input.GetKey(KeyCode.DownArrow))
-            {
                 vel.y = -climbSpeed;
-            }
             else
-            {
                 vel.y = 0;
-            }
         }
         else
         {
@@ -221,13 +212,9 @@ public class PlayerController : MonoBehaviour
 
             // stop it from creeping forever, adds delay when movement is 0/null
             if (Mathf.Abs(vel.x) <= walkSpeed / 7)
-            {
                 vel.x = 0;
-            }
             else
-            {
                 vel.x = vel.x / 2;
-            }
         }
 
         // Sets our own velocity equal to the value of the Rigidbody velocity
@@ -236,24 +223,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<ItemPickup>() != null)
-        {
-            // Item pickup
-        }
-        if (collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy")
-        {
-            health--;
-            isDead = true;
-        }
+        isDead = collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy";
     }
-
 
     private void Punch()
     {
         if (CanPunch && Input.GetKeyDown(KeyCode.X) && !isPunching)
-        {
             StartCoroutine(PunchCoroutine());
-        }
     }
 
     private IEnumerator PunchCoroutine()
@@ -266,7 +242,7 @@ public class PlayerController : MonoBehaviour
         hitBoxPunch.GetComponent<SpriteRenderer>().enabled = false;
         isPunching = false;
     }
-    
+
     private void WallClimb()
     {
         //Wall Grab
@@ -285,15 +261,13 @@ public class PlayerController : MonoBehaviour
 
     private void Respawn()
     {
-        if (transform.position.y <= respawnYValue)
-        {
-            isDead = true;
-        }
         if (isDead)
         {
             transform.position = respawnPos;
+            --health;
             isDead = false;
         }
+        isDead = transform.position.y <= respawnYValue;
     }
 
     // Start is called before the first frame update
@@ -302,15 +276,29 @@ public class PlayerController : MonoBehaviour
         respawnPos = transform.position;
         rb2D = GetComponent<Rigidbody2D>();
         capCol2D = GetComponent<CapsuleCollider2D>();
-        flashLight = transform.Find("Flame").gameObject;
-        flashLight.SetActive(false);
+        flameBoi = transform.Find("Flame").gameObject;
+        flameBoi.SetActive(false);
         col = GetComponent<Collision>();
         ani = GetComponent<Animator>();
         plrHeight = capCol2D.size.y;
         plrOffset = capCol2D.offset.y;
         spr = GetComponent<SpriteRenderer>();
-        if (hitBoxPunch == null)
-            hitBoxPunch = GameObject.Find("PunchHitbox");
+        hitBoxPunch = transform.Find("PunchHitbox").gameObject;
+    }
+
+    private void Awake()
+    {
+        respawnPos = transform.position;
+        rb2D = GetComponent<Rigidbody2D>();
+        capCol2D = GetComponent<CapsuleCollider2D>();
+        flameBoi = transform.Find("Flame").gameObject;
+        flameBoi.SetActive(false);
+        col = GetComponent<Collision>();
+        ani = GetComponent<Animator>();
+        plrHeight = capCol2D.size.y;
+        plrOffset = capCol2D.offset.y;
+        spr = GetComponent<SpriteRenderer>();
+        hitBoxPunch = transform.Find("PunchHitbox").gameObject;
     }
 
     // Update is called once per frame
@@ -328,15 +316,8 @@ public class PlayerController : MonoBehaviour
 
     private void Light()
     {
-        if (HasFlashlight)
-        {
-            flashLight.SetActive(true);
-        }
+        flameBoi.SetActive(HasFlashlight);
     }
 
-    //if (HasFlashlight && GetComponentInChildren<Light2D>() != null && !GetComponentInChildren<Light2D>().enabled)
-            //{
-            //    GetComponentInChildren<Light2D>().enabled = true;
-            //}
     #endregion Private Methods
 }
