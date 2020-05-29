@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2465924070733462604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6, y: 0, z: 0}
+  m_LocalPosition: {x: 0.66, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 2465924072316334834}
@@ -276,10 +276,10 @@ MonoBehaviour:
   rightWall: 0
   leftWall: 0
   wallSide: 0
-  collisionRadius: 0.25
-  groundOffset: {x: 0, y: 0}
-  rightOffset: {x: 0, y: 0}
-  leftOffset: {x: 0, y: 0}
+  collisionRadius: 0.1
+  groundOffset: {x: 0, y: -0.75}
+  rightOffset: {x: -0.35, y: -0.4}
+  leftOffset: {x: 0.35, y: -0.4}
 --- !u!114 &2465924072316334833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,18 +292,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5da396bbe56c6042984666288427309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanCrouch: 1
+  CanCrouch: 0
   CanJump: 1
-  CanJumpTwice: 1
+  CanJumpTwice: 0
   CanMove: 1
-  CanPunch: 1
-  CanWallClimb: 1
-  HasFlashlight: 1
-  HasKeyBlue: 1
-  HasKeyRed: 1
-  HasKeyYellow: 1
+  CanPunch: 0
+  CanWallClimb: 0
+  HasFlashlight: 0
+  HasKeyBlue: 0
+  HasKeyRed: 0
+  HasKeyYellow: 0
   health: 6
-  jumpHeight: 4.5
+  jumpHeight: 5.5
   jumpsLeft: 1
   livesLeft: 3
   climbSpeed: 3
@@ -356,7 +356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4825846289275202894}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3211215952548601890}
@@ -376,7 +376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.62
+  m_FalloffIntensity: 0.67
   m_Color: {r: 0.9056604, g: 0.44703382, b: 0.256319, a: 1}
   m_Intensity: 1.5
   m_LightVolumeOpacity: 0
@@ -390,7 +390,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 4.4510098
+  m_PointLightOuterRadius: 4.535755
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -421,7 +421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3211215952548601890
 Transform:
   m_ObjectHideFlags: 0
