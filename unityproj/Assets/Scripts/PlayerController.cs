@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
         ani.SetFloat("vSpeed", Mathf.Abs(vel.x));
-        ani.SetBool("isCrouching", false);
+        //ani.SetBool("isCrouching", false);
     }
 
     private void Crouch()
@@ -116,16 +116,16 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 capCol2D.size = new Vector3(capCol2D.size.x, plrHeight / 2.5f);
-                capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset - plrHeight / 4.2f);
+                capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset - plrHeight / 4f);
 
-                //ChangeState(AnimationState.Crouch);
+                ani.SetBool("isCrouching", true);
             }
             if (Input.GetKeyUp(KeyCode.DownArrow))
             {
                 capCol2D.size = new Vector3(capCol2D.size.x, plrHeight);
                 capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset);
+                ani.SetBool("isCrouching", false);
 
-                //ChangeState(AnimationState.Walk);
             }
         }
     }

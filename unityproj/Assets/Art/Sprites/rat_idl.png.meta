@@ -1,67 +1,22 @@
 fileFormatVersion: 2
-guid: cf5ae92b6b096884c8ea00c046d97444
+guid: 00224c39c796965459641e1db1d15c34
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 444702640956841479
-    second: PlayerJump_0
+      213: -2881917464546603511
+    second: rat_idl_0
   - first:
-      213: -7941400250425145444
-    second: PlayerJump_1
+      213: 2323031568768080794
+    second: rat_idl_1
   - first:
-      213: 496497603323687001
-    second: PlayerJump_2
+      213: -8172386133192289043
+    second: rat_idl_2
   - first:
-      213: 8691810124558177054
-    second: PlayerJump_3
+      213: -1659246250662803293
+    second: rat_idl_3
   - first:
-      213: -2098300212452292270
-    second: PlayerJump_4
-  - first:
-      213: -2178818368794951686
-    second: PlayerJump_5
-  - first:
-      213: 8744439205818513450
-    second: PlayerJump_6
-  - first:
-      213: -1831677882150188195
-    second: PlayerJump_7
-  - first:
-      213: -1195176971817732050
-    second: PlayerJump_8
-  - first:
-      213: -983954678055824977
-    second: PlayerJump_9
-  - first:
-      213: -4256586781367078120
-    second: PlayerJump_10
-  - first:
-      213: 89184870379428924
-    second: PlayerJump_11
-  - first:
-      213: -5564876198154315674
-    second: PlayerJump_12
-  - first:
-      213: 919512309792203914
-    second: PlayerJump_13
-  - first:
-      213: 5922755466697560486
-    second: PlayerJump_14
-  - first:
-      213: 7893620249462060183
-    second: PlayerJump_15
-  - first:
-      213: -8288331379664323226
-    second: PlayerJump_16
-  - first:
-      213: 3532062413269662041
-    second: PlayerJump_17
-  - first:
-      213: -7948467774633113102
-    second: PlayerJump_18
-  - first:
-      213: 5191569803070447060
-    second: PlayerJump_19
+      213: 201070529457634565
+    second: rat_idl_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -156,7 +111,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: rat_idl_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e84b5c55f5108d0800000000000000
+      internalID: -2881917464546603511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_idl_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9b907267e01d3020800000000000000
+      internalID: 2323031568768080794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_idl_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de4debb6c1ad59e80800000000000000
+      internalID: -8172386133192289043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_idl_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8485a735c29f8e0800000000000000
+      internalID: -1659246250662803293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: rat_idl_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50d3f1bc4985ac200800000000000000
+      internalID: 201070529457634565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
