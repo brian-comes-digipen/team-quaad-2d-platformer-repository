@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
@@ -277,6 +278,10 @@ public class PlayerController : MonoBehaviour
         Crouch();
         Respawn();
         AnimateSprite();
+        if (HasFlashlight && GetComponentInChildren<Light2D>() != null && !GetComponentInChildren<Light2D>().enabled)
+        {
+            GetComponentInChildren<Light2D>().enabled = true;
+        }
     }
 
     private void Punch()
