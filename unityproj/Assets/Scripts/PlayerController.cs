@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private float fallDelayLeft = 0;
 
-    private bool isCrouching = false;
+    //private bool isCrouching = false;
 
     private bool isDead = false;
 
@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 vel;
 
     private GameObject hitBoxPunch;
+
+    private GameObject flashLight;
 
     private Animator ani;
 
@@ -49,17 +51,15 @@ public class PlayerController : MonoBehaviour
 
     public bool CanPunch = false;
 
-    public bool CanPushPull = false;
-
-    public bool CanSprint = false;
+    //public bool CanSprint = false;
 
     public bool CanWallClimb = false;
 
-    public bool CanWallGrab = false;
+    //public bool CanWallGrab = false;
 
-    public bool CanWallJump = false;
+    //public bool CanWallJump = false;
 
-    public bool CanWallSlide = false;
+    //public bool CanWallSlide = false;
 
     [Header("Items")]
     public bool HasFlashlight = false;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     public float fallSpeed = 3f;
 
     [Header("Other Stuff")]
-    public Vector2 respawnPos;
+    internal Vector3 respawnPos;
 
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
@@ -105,13 +105,13 @@ public class PlayerController : MonoBehaviour
     private void AnimateSprite()
     {
         ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
-        ani.SetFloat("vSpeed", Mathf.Abs(vel.x));
+        ani.SetFloat("vSpeed", vel.y);
         //ani.SetBool("isCrouching", false);
     }
 
     private void Crouch()
     {
-        if (!isWallGrabbing)
+        if(CanCrouch && !isWallGrabbing)
         {
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
+                ani.SetBool("isJumping", true);
                 vel = Vector2.up * jumpHeight;
                 jumpsLeft--;
             }
@@ -147,6 +148,11 @@ public class PlayerController : MonoBehaviour
                     jumpsLeft = 2;
                 else
                     jumpsLeft = 1;
+
+                if (col.onGround)
+                {
+                    ani.SetBool("isJumping", false);
+                }
             }
 
             if (rb2D.velocity.y < 0)
@@ -168,6 +174,7 @@ public class PlayerController : MonoBehaviour
             }
 
             rb2D.velocity = vel;
+
         }
     }
 
@@ -240,6 +247,42 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+    private void Punch()
+    {
+        if (CanPunch && Input.GetKeyDown(KeyCode.X) && !isPunching)
+        {
+            StartCoroutine(PunchCoroutine());
+        }
+    }
+
+    private IEnumerator PunchCoroutine()
+    {
+        isPunching = true;
+        hitBoxPunch.layer = 15;
+        hitBoxPunch.GetComponent<SpriteRenderer>().enabled = true;
+        yield return new WaitForSeconds(.25f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
+        hitBoxPunch.layer = 12;
+        hitBoxPunch.GetComponent<SpriteRenderer>().enabled = false;
+        isPunching = false;
+    }
+    
+    private void WallClimb()
+    {
+        //Wall Grab
+        if (CanWallClimb && col.onWall && Input.GetKey(KeyCode.LeftShift))
+        {
+            isWallGrabbing = true;
+            jumpsLeft = 1;
+            rb2D.gravityScale = 0;
+        }
+        else
+        {
+            isWallGrabbing = false;
+            rb2D.gravityScale = 1;
+        }
+    }
+
     private void Respawn()
     {
         if (transform.position.y <= respawnYValue)
@@ -256,13 +299,15 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        respawnPos = transform.position;
         rb2D = GetComponent<Rigidbody2D>();
         capCol2D = GetComponent<CapsuleCollider2D>();
+        flashLight = transform.Find("Flame").gameObject;
+        flashLight.SetActive(false);
         col = GetComponent<Collision>();
         ani = GetComponent<Animator>();
         plrHeight = capCol2D.size.y;
         plrOffset = capCol2D.offset.y;
-        respawnPos = transform.position;
         spr = GetComponent<SpriteRenderer>();
         if (hitBoxPunch == null)
             hitBoxPunch = GameObject.Find("PunchHitbox");
@@ -276,49 +321,22 @@ public class PlayerController : MonoBehaviour
         Jump();
         Punch();
         Crouch();
+        Light();
         Respawn();
         AnimateSprite();
-        if (HasFlashlight && GetComponentInChildren<Light2D>() != null && !GetComponentInChildren<Light2D>().enabled)
-        {
-            GetComponentInChildren<Light2D>().enabled = true;
-        }
     }
 
-    private void Punch()
+    private void Light()
     {
-        if (CanPunch && Input.GetKeyDown(KeyCode.X) && !isPunching)
+        if (HasFlashlight)
         {
-            StartCoroutine(PunchCoroutine());
+            flashLight.SetActive(true);
         }
     }
 
-    private void WallClimb()
-    {
-        //Wall Grab
-        if (CanWallGrab && col.onWall && Input.GetKey(KeyCode.LeftShift))
-        {
-            isWallGrabbing = true;
-            jumpsLeft = 1;
-            rb2D.gravityScale = 0;
-        }
-        else
-        {
-            isWallGrabbing = false;
-            rb2D.gravityScale = 1;
-        }
-    }
-
-    // PUNCHING IS BROKEN??? IT MAKES THE PLAYER DISAPPEAR??? WHAT THE HELL IS HAPPENING
-    private IEnumerator PunchCoroutine()
-    {
-        isPunching = true;
-        hitBoxPunch.layer = 15;
-        hitBoxPunch.GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(.25f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
-        hitBoxPunch.layer = 12;
-        hitBoxPunch.GetComponent<SpriteRenderer>().enabled = false;
-        isPunching = false;
-    }
-
+    //if (HasFlashlight && GetComponentInChildren<Light2D>() != null && !GetComponentInChildren<Light2D>().enabled)
+            //{
+            //    GetComponentInChildren<Light2D>().enabled = true;
+            //}
     #endregion Private Methods
 }

@@ -39,24 +39,22 @@ public class ItemPickup : MonoBehaviour
 
         EnablePunch,
 
-        EnableSprint,
-
-        EnablePushPull,
+        //EnableSprint,
 
         EnableWallClimb,
 
-        EnableWallJump,
+        //EnableWallJump,
 
-        EnableWallSlide,
+        //EnableWallSlide,
 
         // Keys & Items
         EnableFlashlight,
 
-        KeyBlue,
+        //KeyBlue,
 
-        KeyRed,
+        //KeyRed,
 
-        KeyYellow,
+        //KeyYellow,
 
         // Other stuff
         SetRespawnPoint,
@@ -109,37 +107,37 @@ public class ItemPickup : MonoBehaviour
                     plrC.CanPunch = true;
                     break;
 
-                case ItemTypes.EnableSprint:
-                    plrC.CanSprint = true;
-                    break;
+                //case ItemTypes.EnableSprint:
+                //    plrC.CanSprint = true;
+                //    break;
 
-                case ItemTypes.EnablePushPull:
-                    plrC.CanPushPull = true;
-                    break;
+                //case ItemTypes.EnablePushPull:
+                //    plrC.CanPushPull = true;
+                //    break;
 
                 case ItemTypes.EnableWallClimb:
                     plrC.CanWallClimb = true;
                     break;
 
-                case ItemTypes.EnableWallJump:
-                    plrC.CanWallJump = true;
-                    break;
+                //case ItemTypes.EnableWallJump:
+                //    plrC.CanWallJump = true;
+                //    break;
 
-                case ItemTypes.EnableWallSlide:
-                    plrC.CanWallSlide = true;
-                    break;
+                //case ItemTypes.EnableWallSlide:
+                //    plrC.CanWallSlide = true;
+                //    break;
 
-                case ItemTypes.KeyBlue:
-                    plrC.HasKeyBlue = true;
-                    break;
+                //case ItemTypes.KeyBlue:
+                //    plrC.HasKeyBlue = true;
+                //    break;
 
-                case ItemTypes.KeyRed:
-                    plrC.HasKeyRed = true;
-                    break;
+                //case ItemTypes.KeyRed:
+                //    plrC.HasKeyRed = true;
+                //    break;
 
-                case ItemTypes.KeyYellow:
-                    plrC.HasKeyYellow = true;
-                    break;
+                //case ItemTypes.KeyYellow:
+                //    plrC.HasKeyYellow = true;
+                //    break;
 
                 case ItemTypes.EnableFlashlight:
                     plrC.HasFlashlight = true;
