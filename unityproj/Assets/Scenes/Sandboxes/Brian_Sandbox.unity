@@ -7235,19 +7235,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2465924070733462604, guid: e71dbb553bd071740afac53a5eeedc21,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
-      propertyPath: CanJump
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
-        type: 3}
-      propertyPath: CanJumpTwice
+      propertyPath: CanPunch
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334834, guid: e71dbb553bd071740afac53a5eeedc21,
@@ -7303,11 +7293,6 @@ PrefabInstance:
     - target: {fileID: 2465924072316334834, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2465924072316334835, guid: e71dbb553bd071740afac53a5eeedc21,
-        type: 3}
-      propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334839, guid: e71dbb553bd071740afac53a5eeedc21,

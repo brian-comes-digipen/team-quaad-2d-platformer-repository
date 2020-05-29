@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
 
     private CapsuleCollider2D capCol2D;
 
-    private BoxCollider2D boxCol2D;
-
     private Collision col;
 
     private float fallDelayLeft = 0;
@@ -258,7 +256,6 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
-        boxCol2D = GetComponent<BoxCollider2D>();
         capCol2D = GetComponent<CapsuleCollider2D>();
         col = GetComponent<Collision>();
         ani = GetComponent<Animator>();
