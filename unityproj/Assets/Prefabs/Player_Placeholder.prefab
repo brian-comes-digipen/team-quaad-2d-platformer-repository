@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2465924070733462604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.66, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.25, z: 1}
+  m_LocalPosition: {x: 0.254, y: 0, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 2465924072316334834}
   m_RootOrder: 0
@@ -254,7 +254,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.75, y: 1.5}
+  m_Size: {x: 0.31, y: 0.75}
   m_Direction: 0
 --- !u!114 &1723120936
 MonoBehaviour:
@@ -276,10 +276,10 @@ MonoBehaviour:
   rightWall: 0
   leftWall: 0
   wallSide: 0
-  collisionRadius: 0.1
-  groundOffset: {x: 0, y: -0.75}
-  rightOffset: {x: -0.35, y: -0.4}
-  leftOffset: {x: 0.35, y: -0.4}
+  collisionRadius: 0.025
+  groundOffset: {x: 0, y: -0.375}
+  rightOffset: {x: -0.15, y: -0.2}
+  leftOffset: {x: 0.15, y: -0.2}
 --- !u!114 &2465924072316334833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +297,11 @@ MonoBehaviour:
   CanJumpTwice: 0
   CanMove: 1
   CanPunch: 0
+  CanSprint: 0
   CanWallClimb: 0
+  CanWallGrab: 0
+  CanWallJump: 0
+  CanWallSlide: 0
   HasFlashlight: 0
   HasKeyBlue: 0
   HasKeyRed: 0
@@ -430,7 +434,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5331881556300634429}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0.045, y: 0.625, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2102372742533647123}
@@ -505,7 +509,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
