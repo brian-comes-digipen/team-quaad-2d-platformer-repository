@@ -7523,7 +7523,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  velocity: {x: 0, y: 0, z: 0}
   onWall: 1
 --- !u!50 &834207241
 Rigidbody2D:
@@ -7839,7 +7838,6 @@ MonoBehaviour:
   CanJumpTwice: 1
   CanMove: 1
   CanPunch: 0
-  CanPushPull: 0
   CanSprint: 0
   CanWallClimb: 1
   CanWallGrab: 1
@@ -7849,18 +7847,16 @@ MonoBehaviour:
   HasKeyBlue: 0
   HasKeyRed: 0
   HasKeyYellow: 0
-  respawnPos: {x: 0, y: 0}
-  hitBoxPunch: {fileID: 0}
-  respawnYValue: -5
   health: 6
-  livesLeft: 3
   jumpHeight: 5
-  fallMultiplier: 1.2
   jumpsLeft: 1
-  walkSpeed: 5
+  livesLeft: 3
   climbSpeed: 2.5
-  fallSpeed: 3
   fallDelay: 0.2
+  fallMultiplier: 1.2
+  fallSpeed: 3
+  respawnYValue: -5
+  walkSpeed: 5
 --- !u!61 &927567615
 BoxCollider2D:
   m_ObjectHideFlags: 0
