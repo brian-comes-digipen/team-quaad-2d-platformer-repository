@@ -13,6 +13,7 @@ public class EnemyBehavior : MonoBehaviour
 
     public float moveSpeed = 1f;
     public bool onWall;
+    public int health = 2;
 
     #endregion Public Fields
 
@@ -40,6 +41,10 @@ public class EnemyBehavior : MonoBehaviour
             moveSpeed *= -1;
         }
         else if (collision.gameObject.layer == 15) // "PLAYERPUNCH" layer
+        {
+            health--;
+        }
+        if (health <= 0)
             Destroy(gameObject);
     }
 
