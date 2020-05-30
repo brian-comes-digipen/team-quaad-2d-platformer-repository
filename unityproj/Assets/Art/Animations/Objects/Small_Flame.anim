@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player_JumpUp
+  m_Name: Small_Flame
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1343335564247816107, guid: 18e749a5c8ab9744c83d648a3d148238,
+      value: {fileID: -2770117413911799366, guid: 5382f377b7744f0428c5a7ffef7ce898,
+        type: 3}
+    - time: 0.11666667
+      value: {fileID: 6252233642421829695, guid: 5382f377b7744f0428c5a7ffef7ce898,
+        type: 3}
+    - time: 0.23333333
+      value: {fileID: -7694710527309207619, guid: 5382f377b7744f0428c5a7ffef7ce898,
+        type: 3}
+    - time: 0.35
+      value: {fileID: -945061334437506588, guid: 5382f377b7744f0428c5a7ffef7ce898,
         type: 3}
     attribute: m_Sprite
     path: 
@@ -41,13 +50,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1343335564247816107, guid: 18e749a5c8ab9744c83d648a3d148238, type: 3}
+    - {fileID: -2770117413911799366, guid: 5382f377b7744f0428c5a7ffef7ce898, type: 3}
+    - {fileID: 6252233642421829695, guid: 5382f377b7744f0428c5a7ffef7ce898, type: 3}
+    - {fileID: -7694710527309207619, guid: 5382f377b7744f0428c5a7ffef7ce898, type: 3}
+    - {fileID: -945061334437506588, guid: 5382f377b7744f0428c5a7ffef7ce898, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.016666668
+    m_StopTime: 0.36666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

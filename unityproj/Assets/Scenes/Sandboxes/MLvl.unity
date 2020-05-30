@@ -408,8 +408,8 @@ MonoBehaviour:
   - {fileID: 812516588}
   - {fileID: 998320968}
   - {fileID: 985783370}
-  fullHeart: {fileID: 21300000, guid: f6724a905ece8c042829fa653d80088d, type: 3}
-  emptyHeart: {fileID: 21300000, guid: 1bfb54f4b13472c479df66d9728ba794, type: 3}
+  fullHeart: {fileID: 21300000, guid: 31131cd781c177f42853b27b168db7bc, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 0c2e5563947578945b9908029c94f599, type: 3}
 --- !u!224 &402547629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -635,6 +635,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1749784956674967136, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2770117413911799366, guid: 5382f377b7744f0428c5a7ffef7ce898,
+        type: 3}
     - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
       propertyPath: jumpHeight
@@ -704,6 +710,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211215952548601890, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3211215952548601890, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e71dbb553bd071740afac53a5eeedc21, type: 3}
