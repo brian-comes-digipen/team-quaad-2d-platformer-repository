@@ -94,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
     public float fallSpeed = 3f;
 
+    public int respawnTimer = 10;
+
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
 
@@ -264,7 +266,10 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             ani.SetBool("isDead", true);
-            
+            while (respawnTimer != 0)
+            {
+                respawnTimer--;
+            }
             transform.position = respawnPos;
             --health;
             isDead = false;
