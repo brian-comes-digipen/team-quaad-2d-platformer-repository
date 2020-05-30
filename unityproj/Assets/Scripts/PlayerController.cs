@@ -270,6 +270,7 @@ public class PlayerController : MonoBehaviour
             {
                 respawnTimer--;
             }
+            respawnTimer = 10;
             transform.position = respawnPos;
             --health;
             isDead = false;
