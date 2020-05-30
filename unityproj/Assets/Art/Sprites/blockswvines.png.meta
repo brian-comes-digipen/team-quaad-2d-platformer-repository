@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: d0463a7dd6c35114283179cde21583dc
+guid: 88a53680ecd9a67409c0bfd7d7083b1e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -268241514156704502
-    second: Vine_tile_overlay_0
+      213: 4437589491864244597
+    second: blockswvines_0
   - first:
-      213: 1450041602707113419
-    second: Vine_tile_overlay_1
+      213: 5305638439189691492
+    second: blockswvines_1
   - first:
-      213: 6885882987049407672
-    second: Vine_tile_overlay_2
+      213: -3504343229594916086
+    second: blockswvines_2
   - first:
-      213: 5748503347514593468
-    second: Vine_tile_overlay_3
+      213: 1293763977643873517
+    second: blockswvines_3
   - first:
-      213: 2890064745725311762
-    second: Vine_tile_overlay_4
+      213: -5137919219601769023
+    second: blockswvines_4
   - first:
-      213: 4890597504610242407
-    second: Vine_tile_overlay_5
+      213: -4503428260048275691
+    second: blockswvines_5
   - first:
-      213: -1256439009900266575
-    second: Vine_tile_overlay_6
+      213: 2648105552306050279
+    second: blockswvines_6
   - first:
-      213: 6398059789084816934
-    second: Vine_tile_overlay_7
+      213: -7534390904960764680
+    second: blockswvines_7
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -44,7 +44,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
@@ -122,7 +122,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Vine_tile_overlay_0
+      name: blockswvines_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,14 +136,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0d3daa93c3074cf0800000000000000
-      internalID: -268241514156704502
+      spriteID: 5711399a12c759d30800000000000000
+      internalID: 4437589491864244597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_1
+      name: blockswvines_1
       rect:
         serializedVersion: 2
         x: 32
@@ -157,14 +157,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc545eea7259f1410800000000000000
-      internalID: 1450041602707113419
+      spriteID: 46c3f8acc0a61a940800000000000000
+      internalID: 5305638439189691492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_2
+      name: blockswvines_2
       rect:
         serializedVersion: 2
         x: 64
@@ -178,14 +178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b45cfff7129f8f50800000000000000
-      internalID: 6885882987049407672
+      spriteID: a0b23f446621e5fc0800000000000000
+      internalID: -3504343229594916086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_3
+      name: blockswvines_3
       rect:
         serializedVersion: 2
         x: 0
@@ -199,14 +199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb050c27659c6cf40800000000000000
-      internalID: 5748503347514593468
+      spriteID: de4d8a6ab7f54f110800000000000000
+      internalID: 1293763977643873517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_4
+      name: blockswvines_4
       rect:
         serializedVersion: 2
         x: 32
@@ -220,14 +220,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21b36d2f2929b1820800000000000000
-      internalID: 2890064745725311762
+      spriteID: 1cdfbfe01b172b8b0800000000000000
+      internalID: -5137919219601769023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_5
+      name: blockswvines_5
       rect:
         serializedVersion: 2
         x: 64
@@ -241,14 +241,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76f84b9d484eed340800000000000000
-      internalID: 4890597504610242407
+      spriteID: 517fd509bdb9081c0800000000000000
+      internalID: -4503428260048275691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_6
+      name: blockswvines_6
       rect:
         serializedVersion: 2
         x: 0
@@ -262,14 +262,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1bb73fc906b309ee0800000000000000
-      internalID: -1256439009900266575
+      spriteID: 7e411f438f5ffb420800000000000000
+      internalID: 2648105552306050279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Vine_tile_overlay_7
+      name: blockswvines_7
       rect:
         serializedVersion: 2
         x: 32
@@ -283,8 +283,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6267c14da797ac850800000000000000
-      internalID: 6398059789084816934
+      spriteID: 8f431ee0467707790800000000000000
+      internalID: -7534390904960764680
       vertices: []
       indices: 
       edges: []
