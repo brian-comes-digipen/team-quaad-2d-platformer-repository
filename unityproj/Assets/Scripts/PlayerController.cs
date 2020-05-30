@@ -263,9 +263,12 @@ public class PlayerController : MonoBehaviour
     {
         if (isDead)
         {
+            ani.SetBool("isDead", true);
+            
             transform.position = respawnPos;
             --health;
             isDead = false;
+            ani.SetBool("isDead", false);
         }
         isDead = transform.position.y <= respawnYValue;
     }
