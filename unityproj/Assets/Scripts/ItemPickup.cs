@@ -39,22 +39,22 @@ public class ItemPickup : MonoBehaviour
 
         EnablePunch,
 
-        //EnableSprint,
+        EnableSprint,
 
         EnableWallClimb,
 
-        //EnableWallJump,
+        EnableWallJump,
 
-        //EnableWallSlide,
+        EnableWallSlide,
 
         // Keys & Items
         EnableFlashlight,
 
-        //KeyBlue,
+        KeyBlue,
 
-        //KeyRed,
+        KeyRed,
 
-        //KeyYellow,
+        KeyYellow,
 
         // Other stuff
         SetRespawnPoint,
@@ -85,90 +85,89 @@ public class ItemPickup : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController plrC = other.GetComponent<PlayerController>();
-
-        if (plrC != null)
+        if (other.GetComponentInParent<PlayerController>() != null && other.GetComponent<Transform>().gameObject.layer == 15)
         {
-            switch (itemType)
+            PlayerController plrC = other.GetComponentInParent<PlayerController>();
+
+            if (plrC != null)
             {
-                case ItemTypes.EnableCrouch:
-                    plrC.CanCrouch = true;
-                    break;
+                switch (itemType)
+                {
+                    case ItemTypes.EnableCrouch:
+                        plrC.CanCrouch = true;
+                        break;
 
-                case ItemTypes.EnableJump:
-                    plrC.CanJump = true;
-                    break;
+                    case ItemTypes.EnableJump:
+                        plrC.CanJump = true;
+                        break;
 
-                case ItemTypes.EnableDblJump:
-                    plrC.CanJumpTwice = true;
-                    break;
+                    case ItemTypes.EnableDblJump:
+                        plrC.CanJumpTwice = true;
+                        break;
 
-                case ItemTypes.EnablePunch:
-                    plrC.CanPunch = true;
-                    break;
+                    case ItemTypes.EnablePunch:
+                        plrC.CanPunch = true;
+                        break;
 
-                //case ItemTypes.EnableSprint:
-                //    plrC.CanSprint = true;
-                //    break;
+                    case ItemTypes.EnableSprint:
+                        plrC.CanSprint = true;
+                        break;
 
-                //case ItemTypes.EnablePushPull:
-                //    plrC.CanPushPull = true;
-                //    break;
+                    case ItemTypes.EnableWallClimb:
+                        plrC.CanWallClimb = true;
+                        break;
 
-                case ItemTypes.EnableWallClimb:
-                    plrC.CanWallClimb = true;
-                    break;
+                    case ItemTypes.EnableWallJump:
+                        plrC.CanWallJump = true;
+                        break;
 
-                //case ItemTypes.EnableWallJump:
-                //    plrC.CanWallJump = true;
-                //    break;
+                    case ItemTypes.EnableWallSlide:
+                        plrC.CanWallSlide = true;
+                        break;
 
-                //case ItemTypes.EnableWallSlide:
-                //    plrC.CanWallSlide = true;
-                //    break;
+                    case ItemTypes.KeyBlue:
+                        plrC.HasKeyBlue = true;
+                        break;
 
-                //case ItemTypes.KeyBlue:
-                //    plrC.HasKeyBlue = true;
-                //    break;
+                    case ItemTypes.KeyRed:
+                        plrC.HasKeyRed = true;
+                        break;
 
-                //case ItemTypes.KeyRed:
-                //    plrC.HasKeyRed = true;
-                //    break;
+                    case ItemTypes.KeyYellow:
+                        plrC.HasKeyYellow = true;
+                        break;
 
-                //case ItemTypes.KeyYellow:
-                //    plrC.HasKeyYellow = true;
-                //    break;
+                    case ItemTypes.EnableFlashlight:
+                        plrC.HasFlashlight = true;
+                        break;
 
-                case ItemTypes.EnableFlashlight:
-                    plrC.HasFlashlight = true;
-                    break;
+                    case ItemTypes.Health:
+                        ++plrC.health;
+                        break;
 
-                case ItemTypes.Health:
-                    ++plrC.health;
-                    break;
+                    case ItemTypes.ExtraLife:
+                        ++plrC.livesLeft;
+                        break;
 
-                case ItemTypes.ExtraLife:
-                    ++plrC.livesLeft;
-                    break;
+                    case ItemTypes.JumpRefill:
+                        ++plrC.jumpsLeft;
+                        break;
 
-                case ItemTypes.JumpRefill:
-                    ++plrC.jumpsLeft;
-                    break;
+                    case ItemTypes.SetRespawnPoint:
+                        plrC.respawnPos = plrRespawnPos;
+                        break;
 
-                case ItemTypes.SetRespawnPoint:
-                    plrC.respawnPos = plrRespawnPos;
-                    break;
-
-                default:
-                    break;
-            }
-            if (UseOnce)
-            {
-                Destroy(gameObject);
-            }
-            else
-            {
-                StartCoroutine(TempDisable());
+                    default:
+                        break;
+                }
+                if (UseOnce)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    StartCoroutine(TempDisable());
+                }
             }
         }
     }
