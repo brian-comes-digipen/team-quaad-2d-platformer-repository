@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     public float fallSpeed = 3f;
 
-    public int respawnTimer = 10;
+    float respawnTimer = 0;
 
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
@@ -111,7 +111,8 @@ public class PlayerController : MonoBehaviour
     private void AnimateSprite()
     {
         ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
-        ani.SetFloat("vSpeed", vel.y);
+        ani.SetFloat("vSpeed", Mathf.Abs(vel.y));
+        ani.SetFloat("vVelocity", vel.y);
 
         //ani.SetBool("isCrouching", false);
     }
@@ -225,7 +226,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        isDead = collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy";
+        if(collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy")
+        {
+            health--;
+        }
     }
 
     private void Punch()
@@ -236,6 +240,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator PunchCoroutine()
     {
+        ani.SetBool("Punch", true);
         isPunching = true;
         hitBoxPunch.layer = 15;
         hitBoxPunch.GetComponent<SpriteRenderer>().enabled = true;
@@ -243,6 +248,7 @@ public class PlayerController : MonoBehaviour
         hitBoxPunch.layer = 12;
         hitBoxPunch.GetComponent<SpriteRenderer>().enabled = false;
         isPunching = false;
+        ani.SetBool("Punch", false);
     }
 
     private void WallClimb()
@@ -250,33 +256,37 @@ public class PlayerController : MonoBehaviour
         //Wall Grab
         if (CanWallClimb && col.onWall && Input.GetKey(KeyCode.LeftShift))
         {
+            ani.SetBool("isWallGrab", true);
             isWallGrabbing = true;
             jumpsLeft = 1;
             rb2D.gravityScale = 0;
         }
         else
         {
+            ani.SetBool("isWallGrab", false);
             isWallGrabbing = false;
             rb2D.gravityScale = 1;
         }
     }
 
-    private void Respawn()
+    private void Died()
     {
+        isDead = health <= 0;
         if (isDead)
         {
-            ani.SetBool("isDead", true);
-            while (respawnTimer != 0)
-            {
-                respawnTimer--;
-            }
-            respawnTimer = 10;
-            transform.position = respawnPos;
-            --health;
-            isDead = false;
-            ani.SetBool("isDead", false);
+            ani.Play("Player_Death");
+            //waits 1 second before respawning to play out the animation
+            respawnTimer = 0.8f;
         }
-        isDead = transform.position.y <= respawnYValue;
+
+    }
+    private void Respawn()
+    {
+        transform.position = respawnPos;
+        isDead = false;
+
+        health = 6;
+
     }
 
     // Start is called before the first frame update
@@ -295,7 +305,7 @@ public class PlayerController : MonoBehaviour
         hitBoxPunch = transform.Find("PunchHitbox").gameObject;
     }
 
-    private void Awake()
+    /*private void Awake()
     {
         respawnPos = transform.position;
         rb2D = GetComponent<Rigidbody2D>();
@@ -308,19 +318,30 @@ public class PlayerController : MonoBehaviour
         plrOffset = capCol2D.offset.y;
         spr = GetComponent<SpriteRenderer>();
         hitBoxPunch = transform.Find("PunchHitbox").gameObject;
-    }
+    }*/
 
     // Update is called once per frame
     private void Update()
     {
-        WallClimb();
-        Movement();
-        Jump();
-        Punch();
-        Crouch();
-        Light();
-        Respawn();
-        AnimateSprite();
+        if (respawnTimer > 0) //wait for death animation to play
+        {
+            respawnTimer -= Time.deltaTime;
+            if (respawnTimer <= 0)
+            {
+                Respawn();
+            }
+        }
+        else
+        {
+            WallClimb();
+            Movement();
+            Jump();
+            Punch();
+            Crouch();
+            Light();
+            Died();
+            AnimateSprite();
+        }
     }
 
     private void Light()
