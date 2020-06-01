@@ -205,7 +205,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1405984357}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 8
+    OrthographicSize: 3
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -7090,7 +7090,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7198,8 +7198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AssetsPPU: 64
-  m_RefResolutionX: 1280
-  m_RefResolutionY: 720
+  m_RefResolutionX: 640
+  m_RefResolutionY: 360
   m_UpscaleRT: 0
   m_PixelSnapping: 1
   m_CropFrameX: 1
@@ -7389,14 +7389,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1723120936, guid: e71dbb553bd071740afac53a5eeedc21, type: 3}
-      propertyPath: onWall
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723120936, guid: e71dbb553bd071740afac53a5eeedc21, type: 3}
-      propertyPath: onGround
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
       propertyPath: CanCrouch
@@ -7516,21 +7508,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211215952548601890, guid: e71dbb553bd071740afac53a5eeedc21,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3211215952548601890, guid: e71dbb553bd071740afac53a5eeedc21,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5331881556300634429, guid: e71dbb553bd071740afac53a5eeedc21,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e71dbb553bd071740afac53a5eeedc21, type: 3}

@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     private Animator ani;
 
+    private float respawnTimer = 0;
+
     #endregion Private Fields
 
     #region Internal Fields
@@ -93,8 +95,6 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 1.5f;
 
     public float fallSpeed = 3f;
-
-    float respawnTimer = 0;
 
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
@@ -226,7 +226,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy")
         {
             health--;
         }
@@ -235,20 +235,30 @@ public class PlayerController : MonoBehaviour
     private void Punch()
     {
         if (CanPunch && Input.GetKeyDown(KeyCode.X) && !isPunching)
-            StartCoroutine(PunchCoroutine());
+        {
+            StartCoroutine(PunchHitboxCoroutine());
+            StartCoroutine(PunchAniCoroutine());
+        }
     }
 
-    private IEnumerator PunchCoroutine()
+    private IEnumerator PunchHitboxCoroutine()
     {
-        ani.SetBool("Punch", true);
         isPunching = true;
+        yield return new WaitForSeconds(.25f);
         hitBoxPunch.layer = 15;
         hitBoxPunch.GetComponent<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(.25f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
+        yield return new WaitForSeconds(.15f); // CHANGE THIS TO HOWEVER LONG THE PUNCH ANIMATION LASTS
         hitBoxPunch.layer = 12;
         hitBoxPunch.GetComponent<SpriteRenderer>().enabled = false;
         isPunching = false;
+    }
+
+    private IEnumerator PunchAniCoroutine()
+    {
+        ani.SetBool("Punch", true);
+        yield return new WaitForSeconds(.25f);
         ani.SetBool("Punch", false);
+        yield return null;
     }
 
     private void WallClimb()
@@ -275,18 +285,18 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             ani.Play("Player_Death");
+
             //waits 1 second before respawning to play out the animation
             respawnTimer = 0.8f;
         }
-
     }
+
     private void Respawn()
     {
         transform.position = respawnPos;
         isDead = false;
 
         health = 6;
-
     }
 
     // Start is called before the first frame update
