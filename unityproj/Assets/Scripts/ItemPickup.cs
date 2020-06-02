@@ -7,6 +7,8 @@ public class ItemPickup : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
+    private SpriteRenderer spr;
+
     #endregion Private Fields
 
     #region Public Fields
@@ -15,6 +17,10 @@ public class ItemPickup : MonoBehaviour
 
     [Header("USE THESE FIELDS ONLY FOR SPECIFIC ITEM TYPES")]
     public bool UseOnce = true;
+
+    public bool isDestroyed = false;
+
+    public sprite destroyed;
 
     public float itemRespawnDelaySeconds = 1.0f;
 
@@ -76,6 +82,7 @@ public class ItemPickup : MonoBehaviour
     private void Start()
     {
         rb2D = GetComponent<Rigidbody2D>();
+        spr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -96,34 +103,42 @@ public class ItemPickup : MonoBehaviour
                 {
                     case ItemTypes.EnableCrouch:
                         plrC.CanCrouch = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnableJump:
                         plrC.CanJump = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnableDblJump:
                         plrC.CanJumpTwice = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnablePunch:
                         plrC.CanPunch = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnableSprint:
                         plrC.CanSprint = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnableWallClimb:
                         plrC.CanWallClimb = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnableWallJump:
                         plrC.CanWallJump = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.EnableWallSlide:
                         plrC.CanWallSlide = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.KeyBlue:
@@ -140,6 +155,7 @@ public class ItemPickup : MonoBehaviour
 
                     case ItemTypes.EnableFlashlight:
                         plrC.HasFlashlight = true;
+                        isDestroyed = true;
                         break;
 
                     case ItemTypes.Health:
@@ -160,6 +176,10 @@ public class ItemPickup : MonoBehaviour
 
                     default:
                         break;
+                }
+                if (isDestroyed)
+                {
+                    spr.Sprite = destroyed;
                 }
                 if (UseOnce)
                 {
