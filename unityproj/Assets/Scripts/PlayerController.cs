@@ -249,11 +249,12 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.layer == EnemyLayer || collision.gameObject.tag == "Enemy")
         {
             health--;
+            ani.Play("Player_Hurt");
             audio.PlayDamage();
         }
         if(collision.gameObject.layer == HazardLayer)
         {
-            health--;
+            isDead = true;
             audio.PlayDamage();
             Respawn();
         }
@@ -314,7 +315,7 @@ public class PlayerController : MonoBehaviour
             ani.Play("Player_Death");
             audio.PlayDied();
             //waits 1 second before respawning to play out the animation
-            respawnTimer = 0.8f;
+            respawnTimer = 0.7f;
         }
     }
 

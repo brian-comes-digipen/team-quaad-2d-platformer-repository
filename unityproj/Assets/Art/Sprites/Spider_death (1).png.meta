@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 26f0c82950a11ce43af24272cf8389d2
+guid: 6dde7e650a9503b4390b74670fe1cc24
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3383998579032081600
-    second: Spider_death_0
+      213: 6554526491484456297
+    second: Spider_death (1)_0
   - first:
-      213: -2466610498069777088
-    second: Spider_death_1
+      213: 1676951822379211222
+    second: Spider_death (1)_1
   - first:
-      213: -6508208478588381548
-    second: Spider_death_2
+      213: 1436941225339223943
+    second: Spider_death (1)_2
   - first:
-      213: 5893613214512521854
-    second: Spider_death_3
+      213: -4381460299614643077
+    second: Spider_death (1)_3
   - first:
-      213: 5002399290370527675
-    second: Spider_death_4
+      213: 2297963041939657665
+    second: Spider_death (1)_4
   - first:
-      213: -8186698033048341124
-    second: Spider_death_5
+      213: -7323042719036709973
+    second: Spider_death (1)_5
   - first:
-      213: -1524421436722054931
-    second: Spider_death_6
+      213: -7973936025601016982
+    second: Spider_death (1)_6
   - first:
-      213: 1741415349140196656
-    second: Spider_death_7
+      213: -7608128349993465532
+    second: Spider_death (1)_7
   - first:
-      213: 5034636998902030351
-    second: Spider_death_8
+      213: -440288139807647301
+    second: Spider_death (1)_8
   - first:
-      213: -3171048414926740671
-    second: Spider_death_9
+      213: 2993049811211902526
+    second: Spider_death (1)_9
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -128,7 +128,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spider_death_0
+      name: Spider_death (1)_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04bbd58b83f9901d0800000000000000
-      internalID: -3383998579032081600
+      spriteID: 96581dbdd1b56fa50800000000000000
+      internalID: 6554526491484456297
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_1
+      name: Spider_death (1)_1
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +163,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0453d4712d6d4cdd0800000000000000
-      internalID: -2466610498069777088
+      spriteID: 6d95b5e2ccab54710800000000000000
+      internalID: 1676951822379211222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_2
+      name: Spider_death (1)_2
       rect:
         serializedVersion: 2
         x: 64
@@ -184,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 496dd85eed23ea5a0800000000000000
-      internalID: -6508208478588381548
+      spriteID: 78f75736e6a01f310800000000000000
+      internalID: 1436941225339223943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_3
+      name: Spider_death (1)_3
       rect:
         serializedVersion: 2
         x: 0
@@ -205,14 +205,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e72219e2ef15ac150800000000000000
-      internalID: 5893613214512521854
+      spriteID: b7c1efb421de133c0800000000000000
+      internalID: -4381460299614643077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_4
+      name: Spider_death (1)_4
       rect:
         serializedVersion: 2
         x: 32
@@ -226,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb1933796a71c6540800000000000000
-      internalID: 5002399290370527675
+      spriteID: 1c31ac5263104ef10800000000000000
+      internalID: 2297963041939657665
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_5
+      name: Spider_death (1)_5
       rect:
         serializedVersion: 2
         x: 64
@@ -247,14 +247,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c75b3c09381036e80800000000000000
-      internalID: -8186698033048341124
+      spriteID: ba36ec832735f5a90800000000000000
+      internalID: -7323042719036709973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_6
+      name: Spider_death (1)_6
       rect:
         serializedVersion: 2
         x: 0
@@ -268,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de8f030b7ca28dae0800000000000000
-      internalID: -1524421436722054931
+      spriteID: a6b7c54be63e65190800000000000000
+      internalID: -7973936025601016982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_7
+      name: Spider_death (1)_7
       rect:
         serializedVersion: 2
         x: 32
@@ -289,14 +289,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03d0aeb9800ca2810800000000000000
-      internalID: 1741415349140196656
+      spriteID: 4498f05439f7a6690800000000000000
+      internalID: -7608128349993465532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_8
+      name: Spider_death (1)_8
       rect:
         serializedVersion: 2
         x: 64
@@ -310,14 +310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0028940daf9ed540800000000000000
-      internalID: 5034636998902030351
+      spriteID: bb992f30548c3e9f0800000000000000
+      internalID: -440288139807647301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spider_death_9
+      name: Spider_death (1)_9
       rect:
         serializedVersion: 2
         x: 0
@@ -331,8 +331,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 143e9be744c2ef3d0800000000000000
-      internalID: -3171048414926740671
+      spriteID: e3ed55802f2798920800000000000000
+      internalID: 2993049811211902526
       vertices: []
       indices: 
       edges: []
