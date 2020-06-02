@@ -105,6 +105,8 @@ public class PlayerController : MonoBehaviour
 
     public float fallSpeed = 3f;
 
+    public static bool gamePaused;
+
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
 
@@ -368,8 +370,14 @@ public class PlayerController : MonoBehaviour
                 Respawn();
             }
         }
+
+        else if(gamePaused)
+        {
+            UnPause();
+        }
         else
         {
+            Pause();
             WallClimb();
             Movement();
             Jump();
@@ -381,10 +389,34 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Pause()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            gamePaused = true;
+        }
+    }
+    private void UnPause()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            gamePaused = false;
+        }
+    }
+
     private void Light()
     {
         flameBoi.SetActive(HasFlashlight);
     }
 
     #endregion Private Methods
+
+    //if(!PlayerController.gamePaused)
+    //{
+    //all enemy stuff in Update()
+    //and set movement to 0
+
+    //}
+    //
+
 }
