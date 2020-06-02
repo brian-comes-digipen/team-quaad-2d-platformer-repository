@@ -107,6 +107,8 @@ public class PlayerController : MonoBehaviour
 
     public static bool gamePaused;
 
+    Vector3 flamepos;
+
     // Y coordinate at which the player dies / respawns
     public float respawnYValue = -5f;
 
@@ -136,6 +138,7 @@ public class PlayerController : MonoBehaviour
             {
                 capCol2D.size = new Vector3(capCol2D.size.x, plrHeight / 2.5f);
                 capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset - plrHeight / 4f);
+                flameBoi.transform.position = new Vector3(flameBoi.transform.position.x, flameBoi.transform.position.y - 0.3f);
 
                 ani.SetBool("isCrouching", true);
             }
@@ -143,6 +146,7 @@ public class PlayerController : MonoBehaviour
             {
                 capCol2D.size = new Vector3(capCol2D.size.x, plrHeight);
                 capCol2D.offset = new Vector3(capCol2D.offset.x, plrOffset);
+                flameBoi.transform.position = new Vector3(flameBoi.transform.position.x, flameBoi.transform.position.y + 0.3f);
                 ani.SetBool("isCrouching", false);
             }
         }
@@ -407,6 +411,7 @@ public class PlayerController : MonoBehaviour
     private void Light()
     {
         flameBoi.SetActive(HasFlashlight);
+        
     }
 
     #endregion Private Methods
