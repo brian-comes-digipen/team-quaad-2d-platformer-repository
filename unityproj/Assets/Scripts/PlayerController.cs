@@ -1,9 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Constants
+    const int ItemLayer = 13;
+    const int EnemyLayer = 9;
+    const int HazardLayer = 10;
+    #endregion Constants
+
     #region Private Fields
 
     private static float plrHeight;
@@ -35,6 +42,8 @@ public class PlayerController : MonoBehaviour
     private GameObject flameBoi;
 
     private Animator ani;
+
+    private Audio audio;
 
     private float respawnTimer = 0;
 
@@ -81,7 +90,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Stats")]
     public int health = 6;
-
+    
     public float jumpHeight = 4.5f;
 
     public int jumpsLeft = 1;
@@ -146,6 +155,7 @@ public class PlayerController : MonoBehaviour
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
                 ani.SetBool("isJumping", true);
+                audio.PlayJump();
                 vel = Vector2.up * jumpHeight;
                 jumpsLeft--;
             }
@@ -226,13 +236,19 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 9 || collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.layer == ItemLayer)
         {
-            health--;
+            audio.PlayPickup();
         }
-        if(collision.gameObject.layer == 10)
+        if (collision.gameObject.layer == EnemyLayer || collision.gameObject.tag == "Enemy")
         {
             health--;
+            audio.PlayDamage();
+        }
+        if(collision.gameObject.layer == HazardLayer)
+        {
+            health--;
+            audio.PlayDamage();
             Respawn();
         }
     }
@@ -290,7 +306,7 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             ani.Play("Player_Death");
-
+            audio.PlayDied();
             //waits 1 second before respawning to play out the animation
             respawnTimer = 0.8f;
         }
@@ -302,6 +318,11 @@ public class PlayerController : MonoBehaviour
         isDead = false;
 
         health = 6;
+    }
+    
+    internal void PlayPickUp()
+    {
+        audio.PlayPickup();
     }
 
     // Start is called before the first frame update
@@ -318,6 +339,7 @@ public class PlayerController : MonoBehaviour
         plrOffset = capCol2D.offset.y;
         spr = GetComponent<SpriteRenderer>();
         hitBoxPunch = transform.Find("PunchHitbox").gameObject;
+        audio = GetComponent<Audio>();
     }
 
     /*private void Awake()

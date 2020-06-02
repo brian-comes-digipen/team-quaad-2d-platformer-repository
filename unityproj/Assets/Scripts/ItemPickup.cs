@@ -91,6 +91,7 @@ public class ItemPickup : MonoBehaviour
 
             if (plrC != null)
             {
+                plrC.PlayPickUp();
                 switch (itemType)
                 {
                     case ItemTypes.EnableCrouch:
