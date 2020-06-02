@@ -183,7 +183,7 @@ public class ItemPickup : MonoBehaviour
                 }
                 if (UseOnce)
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
                 else
                 {
