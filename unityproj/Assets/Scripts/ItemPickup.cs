@@ -20,7 +20,7 @@ public class ItemPickup : MonoBehaviour
 
     public bool isDestroyed = false;
 
-    public sprite destroyed;
+    public Sprite destroyed;
 
     public float itemRespawnDelaySeconds = 1.0f;
 
@@ -179,7 +179,7 @@ public class ItemPickup : MonoBehaviour
                 }
                 if (isDestroyed)
                 {
-                    spr.Sprite = destroyed;
+                    this.GetComponent<SpriteRenderer>().sprite = destroyed;
                 }
                 if (UseOnce)
                 {
