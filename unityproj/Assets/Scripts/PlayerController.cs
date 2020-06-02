@@ -230,6 +230,11 @@ public class PlayerController : MonoBehaviour
         {
             health--;
         }
+        if(collision.gameObject.layer == 10)
+        {
+            health--;
+            Respawn();
+        }
     }
 
     private void Punch()
