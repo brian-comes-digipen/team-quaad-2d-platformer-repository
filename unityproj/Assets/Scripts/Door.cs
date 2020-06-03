@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public Sprite Opened;
+
+    public int DoorValue = 0;
+
+    public GameObject Player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +19,9 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Player.GetComponent<PlayerController>().keysCollected == DoorValue)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = Opened;
+        }
     }
 }
