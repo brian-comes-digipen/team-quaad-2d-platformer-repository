@@ -9,6 +9,8 @@ public class ItemPickup : MonoBehaviour
 
     private SpriteRenderer spr;
 
+    private bool AlreadyDead = false;
+
     #endregion Private Fields
 
     #region Public Fields
@@ -181,6 +183,12 @@ public class ItemPickup : MonoBehaviour
                 {
                     plrC.PlayPickUp();
                     this.GetComponent<SpriteRenderer>().sprite = destroyed;
+
+                    if (!AlreadyDead)
+                    {
+                        plrC.keysCollected++;
+                        AlreadyDead = true;
+                    }
                 }
                 if (UseOnce)
                 {
