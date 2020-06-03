@@ -35,6 +35,7 @@ public class EnemyBehavior : MonoBehaviour
         vel = rb2D.velocity;
         ani = GetComponent<Animator>();
         ani.SetBool("isWallEnemy", onWall);
+        moveSpeed *= -1;
     }
 
     // Update is called once per frame
