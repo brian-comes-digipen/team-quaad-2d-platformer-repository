@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 1723120936}
   - component: {fileID: 2465924072316334833}
   - component: {fileID: 2034447941}
+  - component: {fileID: 668083358}
   m_Layer: 8
   m_Name: Player_Placeholder
   m_TagString: Untagged
@@ -292,20 +293,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5da396bbe56c6042984666288427309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanCrouch: 0
-  CanJump: 1
-  CanJumpTwice: 0
+  CanCrouch: 1
+  CanJump: 0
+  CanJumpTwice: 1
   CanMove: 1
-  CanPunch: 0
-  CanSprint: 0
-  CanWallClimb: 0
-  CanWallGrab: 0
-  CanWallJump: 0
-  CanWallSlide: 0
-  HasFlashlight: 0
-  HasKeyBlue: 0
-  HasKeyRed: 0
-  HasKeyYellow: 0
+  CanPunch: 1
+  CanSprint: 1
+  CanWallClimb: 1
+  CanWallGrab: 1
+  CanWallJump: 1
+  CanWallSlide: 1
+  HasFlashlight: 1
+  HasKeyBlue: 1
+  HasKeyRed: 1
+  HasKeyYellow: 1
   health: 6
   jumpHeight: 5.5
   jumpsLeft: 1
@@ -335,6 +336,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &668083358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2465924072316334839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2646d5aae1437a64f8d3d01f3c05f001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jump: {fileID: 8300000, guid: 40ec62ae6326d754588d8e6912e3667f, type: 3}
+  pickup: {fileID: 8300000, guid: e0c51452b46b327428c9ef700c804c95, type: 3}
+  damage: {fileID: 8300000, guid: 91d9246ee93bc7540802b865f6e22b60, type: 3}
+  died: {fileID: 8300000, guid: 5904837051f68cc44be24bf0e6649b7b, type: 3}
 --- !u!1 &4825846289275202894
 GameObject:
   m_ObjectHideFlags: 0
