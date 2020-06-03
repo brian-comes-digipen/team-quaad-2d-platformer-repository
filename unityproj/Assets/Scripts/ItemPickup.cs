@@ -98,7 +98,7 @@ public class ItemPickup : MonoBehaviour
 
             if (plrC != null)
             {
-                plrC.PlayPickUp();
+               
                 switch (itemType)
                 {
                     case ItemTypes.EnableCrouch:
@@ -179,6 +179,7 @@ public class ItemPickup : MonoBehaviour
                 }
                 if (isDestroyed)
                 {
+                    plrC.PlayPickUp();
                     this.GetComponent<SpriteRenderer>().sprite = destroyed;
                 }
                 if (UseOnce)

@@ -104,6 +104,7 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 1.5f;
 
     public float fallSpeed = 3f;
+    public float fastFallSpeed = 2f;
 
     public static bool gamePaused;
 
@@ -160,12 +161,13 @@ public class PlayerController : MonoBehaviour
 
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
+                ani.SetBool("isFallingFast", false);
                 ani.SetBool("isJumping", true);
                 audio.PlayJump();
                 vel = Vector2.up * jumpHeight;
                 jumpsLeft--;
             }
-            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+            else if ((rb2D.velocity.y == 0 || col.onGround) && rb2D.IsTouchingLayers())
             {
                 if (CanJumpTwice)
                     jumpsLeft = 2;
@@ -173,10 +175,20 @@ public class PlayerController : MonoBehaviour
                     jumpsLeft = 1;
 
                 if (col.onGround)
+                {
                     ani.SetBool("isJumping", false);
+                    ani.SetBool("isFalling", false);
+                }
+            }
+            else if (rb2D.velocity.y <= -fastFallSpeed)
+            {
+                print(rb2D.velocity.y);
+                if (!col.onGround)
+                    ani.SetBool("isFalling", true);
+                ani.SetBool("isFallingFast", rb2D.velocity.y <= -fastFallSpeed);
             }
 
-            if (rb2D.velocity.y < 0)
+            if (rb2D.velocity.y < 0 )
             {
                 if (col.onWall)
                 {
