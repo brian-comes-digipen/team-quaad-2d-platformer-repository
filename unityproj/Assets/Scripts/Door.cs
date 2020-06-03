@@ -19,7 +19,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.GetComponent<PlayerController>().KeysCollected == doorValue)
+        if (Player.GetComponent<PlayerController>().keysCollected == DoorValue)
         {
             this.GetComponent<SpriteRenderer>().sprite = Opened;
         }
