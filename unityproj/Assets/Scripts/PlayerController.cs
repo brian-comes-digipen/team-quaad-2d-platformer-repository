@@ -108,6 +108,8 @@ public class PlayerController : MonoBehaviour
 
     public static bool gamePaused;
 
+    public int keysCollected = 0;
+
     Vector3 flamepos;
 
     // Y coordinate at which the player dies / respawns
