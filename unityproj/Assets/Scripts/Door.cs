@@ -16,8 +16,6 @@ public class Door : MonoBehaviour
 
     public Sprite DoorFour;
 
-    public Sprite DoorFive;
-
     public Sprite DoorNone;
 
     public int DoorValue = 4;
@@ -36,22 +34,22 @@ public class Door : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sprite = DoorOpened;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 1)
+        else if (Player.GetComponent<PlayerController>().keysCollected == 1)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorOne;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 2)
+        else if (Player.GetComponent<PlayerController>().keysCollected == 2)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorTwo;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 3)
+        else if (Player.GetComponent<PlayerController>().keysCollected == 3)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorThree;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 4)
+        else if (Player.GetComponent<PlayerController>().keysCollected == 4)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorFour;
         }
