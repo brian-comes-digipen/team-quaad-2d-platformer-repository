@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Constants
-    const int ItemLayer = 13;
-    const int EnemyLayer = 9;
-    const int HazardLayer = 10;
-    #endregion Constants
-
     #region Private Fields
+
+    private const int ItemLayer = 13;
+
+    private const int EnemyLayer = 9;
+
+    private const int HazardLayer = 10;
 
     private static float plrHeight;
 
@@ -23,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private float fallDelayLeft = 0;
 
-    //private bool isCrouching = false;
+    private bool isCrouching = false;
 
     private bool isDead = false;
 
@@ -43,9 +41,11 @@ public class PlayerController : MonoBehaviour
 
     private Animator ani;
 
-    private Audio audio;
+    private Audio aud;
 
     private float respawnTimer = 0;
+
+    private Vector3 flamepos;
 
     #endregion Private Fields
 
@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     #endregion Internal Fields
 
     #region Public Fields
+
+    public static bool gamePaused;
 
     [Header("Abilities")]
     public bool CanCrouch = false;
@@ -89,8 +91,8 @@ public class PlayerController : MonoBehaviour
     public bool HasKeyYellow = false;
 
     [Header("Stats")]
-    public int health = 6;
-    
+    public int health = 6; // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
+
     public float jumpHeight = 4.5f;
 
     public int jumpsLeft = 1;
@@ -104,19 +106,12 @@ public class PlayerController : MonoBehaviour
     public float fallMultiplier = 1.5f;
 
     public float fallSpeed = 3f;
-    public float fastFallSpeed = 2f;
 
-    public static bool gamePaused;
+    public float fastFallSpeed = 2f;
 
     public int keysCollected = 0;
 
-    Vector3 flamepos;
-
-    // Y coordinate at which the player dies / respawns
-    public float respawnYValue = -5f;
-
-    // player has three hearts, but since there are half hearts (making 6 total halves), the player's max health is 6
-    //public float jumpVelocity;
+    public float jumpVelocity;
 
     public float walkSpeed = 5f;
 
@@ -124,19 +119,15 @@ public class PlayerController : MonoBehaviour
 
     #region Private Methods
 
-
     private void AnimateSprite()
     {
         if (vel.y == 0)
             ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
-
         else
         {
             ani.SetFloat("vVelocity", vel.y);
             ani.SetFloat("vSpeed", Mathf.Abs(vel.y));
         }
-
-        //ani.SetBool("isCrouching", false);
     }
 
     private void Crouch()
@@ -160,7 +151,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-    
+
     private void Jump()
     {
         if (!isWallGrabbing)
@@ -170,7 +161,7 @@ public class PlayerController : MonoBehaviour
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
                 ani.SetBool("isJumping", true);
-                audio.PlayJump();
+                aud.PlayJump();
                 vel = Vector2.up * jumpHeight;
                 jumpsLeft--;
             }
@@ -251,21 +242,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == ItemLayer)
+        if (collision.gameObject.layer == ItemLayer)
         {
-            audio.PlayPickup();
+            aud.PlayPickup();
         }
         if (collision.gameObject.layer == EnemyLayer || collision.gameObject.tag == "Enemy")
         {
             health--;
             ani.Play("Player_Hurt");
-            audio.PlayDamage();
+            aud.PlayDamage();
         }
-        if(collision.gameObject.layer == HazardLayer)
+        if (collision.gameObject.layer == HazardLayer)
         {
             isDead = true;
-            audio.PlayDamage();
-            Respawn();
+            aud.PlayDamage();
+            StartCoroutine(RespawnWait(respawnTimer)); // TODO: CHANGE THIS TO HOWEVER LONG THE DEATH ANIMATION IS???
         }
     }
 
@@ -322,23 +313,24 @@ public class PlayerController : MonoBehaviour
         if (isDead)
         {
             ani.Play("Player_Death");
-            audio.PlayDied();
+            aud.PlayDied();
+
             //waits 1 second before respawning to play out the animation
             respawnTimer = 0.7f;
         }
     }
 
-    private void Respawn()
+    private void ResetPos()
     {
         transform.position = respawnPos;
+    }
+
+    private void Respawn()
+    {
+        ResetPos();
         isDead = false;
 
         health = 6;
-    }
-    
-    internal void PlayPickUp()
-    {
-        audio.PlayPickup();
     }
 
     // Start is called before the first frame update
@@ -355,41 +347,23 @@ public class PlayerController : MonoBehaviour
         plrOffset = capCol2D.offset.y;
         spr = GetComponent<SpriteRenderer>();
         hitBoxPunch = transform.Find("PunchHitbox").gameObject;
-        audio = GetComponent<Audio>();
+        aud = GetComponent<Audio>();
     }
 
-    /*private void Awake()
+    private IEnumerator RespawnWait(float s)
     {
-        respawnPos = transform.position;
-        rb2D = GetComponent<Rigidbody2D>();
-        capCol2D = GetComponent<CapsuleCollider2D>();
-        flameBoi = transform.Find("Flame").gameObject;
-        flameBoi.SetActive(false);
-        col = GetComponent<Collision>();
-        ani = GetComponent<Animator>();
-        plrHeight = capCol2D.size.y;
-        plrOffset = capCol2D.offset.y;
-        spr = GetComponent<SpriteRenderer>();
-        hitBoxPunch = transform.Find("PunchHitbox").gameObject;
-    }*/
+        yield return new WaitForSeconds(s);
+        Respawn();
+    }
 
     // Update is called once per frame
     private void Update()
     {
-        if (respawnTimer > 0) //wait for death animation to play
-        {
-            respawnTimer -= Time.deltaTime;
-            if (respawnTimer <= 0)
-            {
-                Respawn();
-            }
-        }
-
-        else if(gamePaused)
+        if (gamePaused)
         {
             UnPause();
         }
-        else
+        else // (!gamePaused)
         {
             Pause();
             WallClimb();
@@ -405,11 +379,12 @@ public class PlayerController : MonoBehaviour
 
     private void Pause()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             gamePaused = true;
         }
     }
+
     private void UnPause()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -421,10 +396,18 @@ public class PlayerController : MonoBehaviour
     private void Light()
     {
         flameBoi.SetActive(HasFlashlight);
-        
     }
 
     #endregion Private Methods
+
+    #region Internal Methods
+
+    internal void PlayPickUp()
+    {
+        aud.PlayPickup();
+    }
+
+    #endregion Internal Methods
 
     //if(!PlayerController.gamePaused)
     //{
@@ -433,5 +416,4 @@ public class PlayerController : MonoBehaviour
 
     //}
     //
-
 }
