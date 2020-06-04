@@ -29,12 +29,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Player.GetComponent<PlayerController>().keysCollected == DoorValue)
-        {
-            this.GetComponent<SpriteRenderer>().sprite = DoorOpened;
-        }
-
-        else if (Player.GetComponent<PlayerController>().keysCollected == 1)
+        if (Player.GetComponent<PlayerController>().keysCollected == 1)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorOne;
         }
@@ -57,6 +52,18 @@ public class Door : MonoBehaviour
         else
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorNone;
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponentInParent<PlayerController>() != null && other.GetComponent<Transform>().gameObject.layer == 15)
+        {
+            if (Player.GetComponent<PlayerController>().keysCollected == DoorValue)
+            {
+                this.GetComponent<SpriteRenderer>().sprite = DoorOpened;
+            }
         }
     }
 }
