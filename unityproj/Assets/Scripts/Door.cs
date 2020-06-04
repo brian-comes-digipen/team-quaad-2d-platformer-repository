@@ -16,11 +16,14 @@ public class Door : MonoBehaviour
 
     public Sprite DoorFour;
 
-    public Sprite DoorFive;
-
     public Sprite DoorNone;
 
     public int DoorValue = 4;
+
+    private int one = 1;
+    private int two = 2;
+    private int three = 3;
+    private int four = 4;
 
     // Start is called before the first frame update
     void Start()
@@ -36,22 +39,22 @@ public class Door : MonoBehaviour
             this.GetComponent<SpriteRenderer>().sprite = DoorOpened;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 1)
+        if (Player.GetComponent<PlayerController>().keysCollected == one)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorOne;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 2)
+        if (Player.GetComponent<PlayerController>().keysCollected == two)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorTwo;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 3)
+        if (Player.GetComponent<PlayerController>().keysCollected == three)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorThree;
         }
 
-        if (Player.GetComponent<PlayerController>().keysCollected == 4)
+        if (Player.GetComponent<PlayerController>().keysCollected == four)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorFour;
         }
