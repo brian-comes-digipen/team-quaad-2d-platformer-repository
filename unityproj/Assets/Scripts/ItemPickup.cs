@@ -9,8 +9,6 @@ public class ItemPickup : MonoBehaviour
 
     private SpriteRenderer spr;
 
-    private bool AlreadyDead = false;
-
     #endregion Private Fields
 
     #region Public Fields
@@ -27,6 +25,8 @@ public class ItemPickup : MonoBehaviour
     public float itemRespawnDelaySeconds = 1.0f;
 
     public Vector2 plrRespawnPos = new Vector2(0, 0);
+
+    public bool AlreadyDead = false;
 
     #endregion Public Fields
 
@@ -179,6 +179,7 @@ public class ItemPickup : MonoBehaviour
                     default:
                         break;
                 }
+
                 if (isDestroyed)
                 {
                     plrC.PlayPickUp();
@@ -190,6 +191,7 @@ public class ItemPickup : MonoBehaviour
                         AlreadyDead = true;
                     }
                 }
+                 
                 if (UseOnce)
                 {
                     //Destroy(gameObject);

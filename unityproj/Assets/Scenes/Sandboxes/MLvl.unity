@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 94167894}
   - component: {fileID: 94167893}
   - component: {fileID: 94167892}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Statue_Yellow (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,6 +184,7 @@ MonoBehaviour:
   destroyed: {fileID: 21300000, guid: 2a89c319240710648a33f6fb45f902ed, type: 3}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!212 &94167894
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -667,6 +668,7 @@ MonoBehaviour:
   destroyed: {fileID: 0}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!61 &486383736
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -769,7 +771,7 @@ GameObject:
   - component: {fileID: 491714257}
   - component: {fileID: 491714256}
   - component: {fileID: 491714255}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Statue_Yellow (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,6 +822,7 @@ MonoBehaviour:
   destroyed: {fileID: 21300000, guid: 2a89c319240710648a33f6fb45f902ed, type: 3}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!212 &491714257
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -901,6 +904,11 @@ PrefabInstance:
         type: 3}
       propertyPath: jumpHeight
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2465924072316334833, guid: e71dbb553bd071740afac53a5eeedc21,
+        type: 3}
+      propertyPath: keysCollected
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2465924072316334834, guid: e71dbb553bd071740afac53a5eeedc21,
         type: 3}
@@ -1359,6 +1367,7 @@ MonoBehaviour:
   destroyed: {fileID: 0}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!61 &669719443
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1641,7 +1650,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b23ab177c2cd95b43bbe9fae7903e294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 625164278}
+  Player: {fileID: 625164278}
+  DoorOpened: {fileID: 21300000, guid: b7e9b7208b71a3b4b9e2be50d86f9d77, type: 3}
+  DoorOne: {fileID: 21300000, guid: 34be31e5ba0903047bd27a38e5d0bb13, type: 3}
+  DoorTwo: {fileID: 21300000, guid: 4a6ae5d99c1db3e45804f8a4f831f07d, type: 3}
+  DoorThree: {fileID: 21300000, guid: bb99723c20a48264494500f7fa96a6f1, type: 3}
+  DoorFour: {fileID: 21300000, guid: c36755067457d344eb83707d101b23ae, type: 3}
+  DoorFive: {fileID: 21300000, guid: b7e9b7208b71a3b4b9e2be50d86f9d77, type: 3}
+  DoorNone: {fileID: 21300000, guid: b7e9b7208b71a3b4b9e2be50d86f9d77, type: 3}
+  DoorValue: 4
 --- !u!1 &927295719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1696,7 @@ MonoBehaviour:
   destroyed: {fileID: 0}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!61 &927295721
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1952,6 +1970,7 @@ MonoBehaviour:
   destroyed: {fileID: 0}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!61 &1028033881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19649,6 +19668,7 @@ MonoBehaviour:
   destroyed: {fileID: 0}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!61 &1287533040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -19865,7 +19885,7 @@ GameObject:
   - component: {fileID: 1409956292}
   - component: {fileID: 1409956294}
   - component: {fileID: 1409956295}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Statue_Yellow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19954,6 +19974,7 @@ MonoBehaviour:
   destroyed: {fileID: 21300000, guid: 2a89c319240710648a33f6fb45f902ed, type: 3}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!61 &1409956295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20561,7 +20582,7 @@ GameObject:
   - component: {fileID: 1796856123}
   - component: {fileID: 1796856122}
   - component: {fileID: 1796856121}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Statue_Yellow (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20612,6 +20633,7 @@ MonoBehaviour:
   destroyed: {fileID: 21300000, guid: 2a89c319240710648a33f6fb45f902ed, type: 3}
   itemRespawnDelaySeconds: 1
   plrRespawnPos: {x: 0, y: 0}
+  AlreadyDead: 0
 --- !u!212 &1796856123
 SpriteRenderer:
   m_ObjectHideFlags: 0
