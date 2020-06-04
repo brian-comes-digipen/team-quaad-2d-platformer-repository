@@ -56,10 +56,16 @@ public class EnemyBehavior : MonoBehaviour
                 transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         }
         else if (collision.gameObject.layer == 15) // "PLAYERPUNCH" layer
+        {
             health--;
+            ani.SetBool("Hurt", true);
+        }
+           
 
         if (health <= 0)
+        {
             StartCoroutine(TimedDeath());
+        }
     }
 
     private void Move()
@@ -71,7 +77,7 @@ public class EnemyBehavior : MonoBehaviour
 
     private IEnumerator TimedDeath()
     {
-        ani.SetBool("dead", true);
+        ani.SetBool("Dead", true);
         yield return new WaitForSeconds(deathDelay);
         Destroy(gameObject);
     }

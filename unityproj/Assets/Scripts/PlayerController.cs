@@ -254,9 +254,8 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.layer == HazardLayer)
         {
-            isDead = true;
-            aud.PlayDamage();
-            StartCoroutine(RespawnWait(respawnTimer)); // TODO: CHANGE THIS TO HOWEVER LONG THE DEATH ANIMATION IS???
+            health = 0;
+            //StartCoroutine(RespawnWait(respawnTimer)); // TODO: CHANGE THIS TO HOWEVER LONG THE DEATH ANIMATION IS???
         }
     }
 
@@ -316,7 +315,7 @@ public class PlayerController : MonoBehaviour
             aud.PlayDied();
 
             //waits 1 second before respawning to play out the animation
-            respawnTimer = 0.7f;
+            respawnTimer = 0.5f;
         }
     }
 
@@ -350,19 +349,28 @@ public class PlayerController : MonoBehaviour
         aud = GetComponent<Audio>();
     }
 
-    private IEnumerator RespawnWait(float s)
-    {
-        yield return new WaitForSeconds(s);
-        Respawn();
-    }
+    //private IEnumerator RespawnWait(float s)
+    //{
+    //    yield return new WaitForSeconds(s);
+    //}
 
     // Update is called once per frame
     private void Update()
     {
-        if (gamePaused)
+        if (respawnTimer > 0) //wait for death animation to play
+        {
+            respawnTimer -= Time.deltaTime;
+            if (respawnTimer <= 0)
+            {
+                Respawn();
+            }
+        }
+
+        else if (gamePaused)
         {
             UnPause();
         }
+
         else // (!gamePaused)
         {
             Pause();
