@@ -124,11 +124,17 @@ public class PlayerController : MonoBehaviour
 
     #region Private Methods
 
+
     private void AnimateSprite()
     {
-        ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
-        ani.SetFloat("vSpeed", Mathf.Abs(vel.y));
-        ani.SetFloat("vVelocity", vel.y);
+        if (vel.y == 0)
+            ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
+
+        else
+        {
+            ani.SetFloat("vVelocity", vel.y);
+            ani.SetFloat("vSpeed", Mathf.Abs(vel.y));
+        }
 
         //ani.SetBool("isCrouching", false);
     }
@@ -154,7 +160,7 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
+    
     private void Jump()
     {
         if (!isWallGrabbing)
@@ -163,13 +169,12 @@ public class PlayerController : MonoBehaviour
 
             if (CanJump && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Z)) && jumpsLeft > 0)
             {
-                ani.SetBool("isFallingFast", false);
                 ani.SetBool("isJumping", true);
                 audio.PlayJump();
                 vel = Vector2.up * jumpHeight;
                 jumpsLeft--;
             }
-            else if ((rb2D.velocity.y == 0 || col.onGround) && rb2D.IsTouchingLayers())
+            else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
             {
                 if (CanJumpTwice)
                     jumpsLeft = 2;
@@ -177,20 +182,10 @@ public class PlayerController : MonoBehaviour
                     jumpsLeft = 1;
 
                 if (col.onGround)
-                {
                     ani.SetBool("isJumping", false);
-                    ani.SetBool("isFalling", false);
-                }
-            }
-            else if (rb2D.velocity.y <= -fastFallSpeed)
-            {
-                print(rb2D.velocity.y);
-                if (!col.onGround)
-                    ani.SetBool("isFalling", true);
-                ani.SetBool("isFallingFast", rb2D.velocity.y <= -fastFallSpeed);
             }
 
-            if (rb2D.velocity.y < 0 )
+            if (rb2D.velocity.y < 0)
             {
                 if (col.onWall)
                 {
