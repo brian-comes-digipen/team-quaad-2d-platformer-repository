@@ -49,6 +49,7 @@ public class Door : MonoBehaviour
         else if (Player.GetComponent<PlayerController>().keysCollected == 4)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorFour;
+            TorchLights.lightsOff = true;
             EnterTrigger.SetActive(true);
         }
 
