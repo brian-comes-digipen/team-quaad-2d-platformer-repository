@@ -1613,7 +1613,7 @@ GameObject:
   m_Component:
   - component: {fileID: 896224927}
   - component: {fileID: 896224926}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: screenwin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1696,7 +1696,7 @@ GameObject:
   - component: {fileID: 964330575}
   - component: {fileID: 964330574}
   - component: {fileID: 964330576}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: spider_statue_withgem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56543,7 +56543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1232430907}
   - component: {fileID: 1232430908}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Point Light 2D (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82446,7 +82446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2101107085}
   - component: {fileID: 2101107084}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
