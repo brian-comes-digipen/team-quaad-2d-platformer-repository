@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     public GameObject Player;
 
+    public GameObject EnterTrigger;
+
     public Sprite DoorOpened;
 
     public Sprite DoorOne;
@@ -21,9 +23,9 @@ public class Door : MonoBehaviour
     public int DoorValue = 4;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        EnterTrigger.SetActive(false);
     }
 
     // Update is called once per frame
@@ -47,6 +49,7 @@ public class Door : MonoBehaviour
         else if (Player.GetComponent<PlayerController>().keysCollected == 4)
         {
             this.GetComponent<SpriteRenderer>().sprite = DoorFour;
+            EnterTrigger.SetActive(true);
         }
 
         else
