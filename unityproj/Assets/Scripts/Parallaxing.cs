@@ -43,7 +43,7 @@ public class Parallaxing : MonoBehaviour
             float distance = Backgrounds[i].position.z - previousCamPos.z; //gets the distance between the camera and all layered backgrounds 
 
             parallaxAmount[i] = (maxDistance - distance + 1) / maxDistance;  //+1 makes the last wall move slightly
-            print(parallaxAmount[i]);
+            //print(parallaxAmount[i]);
         }
     }
 
