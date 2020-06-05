@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     public GameObject Player;
 
+    public GameObject EnterTrigger;
+
     public Sprite DoorOpened;
 
     public Sprite DoorOne;

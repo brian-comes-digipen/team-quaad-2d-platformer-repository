@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -317,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 4735734886699562417, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -4.01
       objectReference: {fileID: 0}
     - target: {fileID: 4735734886699562417, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
@@ -364,10 +364,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4735734886699562418, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4735734886699562419, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
       propertyPath: m_Name
       value: Torch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734886699562419, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734887018467006, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 7.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734887018467006, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.577
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 913e4ce27d38a2d4d9b228327de0598a, type: 3}
@@ -530,7 +550,7 @@ GameObject:
   - component: {fileID: 637183691}
   - component: {fileID: 637183690}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -545,14 +565,14 @@ RectTransform:
   m_GameObject: {fileID: 637183688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 25905845}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -10.8}
+  m_AnchoredPosition: {x: 0, y: -18}
   m_SizeDelta: {x: 135, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &637183690
@@ -781,7 +801,7 @@ GameObject:
   - component: {fileID: 692998733}
   - component: {fileID: 692998734}
   m_Layer: 5
-  m_Name: Play
+  m_Name: Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,14 +816,14 @@ RectTransform:
   m_GameObject: {fileID: 692998728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_Children: []
   m_Father: {fileID: 25905845}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -70.8}
+  m_AnchoredPosition: {x: 0, y: -105}
   m_SizeDelta: {x: 135, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &692998730
@@ -3115,7 +3135,7 @@ PrefabInstance:
     - target: {fileID: 4735734886699562417, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -4.01
       objectReference: {fileID: 0}
     - target: {fileID: 4735734886699562417, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
@@ -3162,10 +3182,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4735734886699562418, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4735734886699562419, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
       propertyPath: m_Name
       value: Torch (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734886699562419, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734887018467006, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 7.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734887018467006, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.577
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 913e4ce27d38a2d4d9b228327de0598a, type: 3}
@@ -3184,7 +3224,7 @@ PrefabInstance:
     - target: {fileID: 4735734886699562417, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4
+      value: -4.01
       objectReference: {fileID: 0}
     - target: {fileID: 4735734886699562417, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
@@ -3231,10 +3271,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4735734886699562418, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4735734886699562419, guid: 913e4ce27d38a2d4d9b228327de0598a,
         type: 3}
       propertyPath: m_Name
       value: Torch (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734886699562419, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734887018467006, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_PointLightOuterRadius
+      value: 7.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735734887018467006, guid: 913e4ce27d38a2d4d9b228327de0598a,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.577
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 913e4ce27d38a2d4d9b228327de0598a, type: 3}
@@ -3507,7 +3567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7999416764988059869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.24, y: -3.79, z: -5.38}
+  m_LocalPosition: {x: 5.52, y: -3.83, z: -5.38}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 7999416765487660641}
