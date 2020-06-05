@@ -9,7 +9,7 @@ public class Ending : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        win = GameObject.Find("winscreen");
+        win = GameObject.Find("screenwin");
         win.SetActive(false);
     }
 
@@ -19,10 +19,11 @@ public class Ending : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-       if(other.GetComponent<Transform>().gameObject.layer == 15)
+        if (other.gameObject.name == "Player")
         {
+            print("collided");
             win.SetActive(true);
         }
     }
