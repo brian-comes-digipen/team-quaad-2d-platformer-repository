@@ -15,9 +15,13 @@ public class DoorEnter : MonoBehaviour
     {
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("IT WORKED");
-        SceneManager.LoadScene("End");
+        if(collision.tag == "Player")
+        {
+            SceneManager.LoadScene("End");
+        }
     }
+    
 }
