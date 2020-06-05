@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class DoorEnter : MonoBehaviour
 {
+
+    public string scene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +23,7 @@ public class DoorEnter : MonoBehaviour
         Debug.Log("IT WORKED");
         if(collision.tag == "Player")
         {
-            SceneManager.LoadScene("End");
+            SceneManager.LoadScene(scene);
         }
     }
     
