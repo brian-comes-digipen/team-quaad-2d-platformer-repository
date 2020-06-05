@@ -6,8 +6,6 @@ public class Door : MonoBehaviour
 {
     public GameObject Player;
 
-    public GameObject EnterTrigger;
-
     public Sprite DoorOpened;
 
     public Sprite DoorOne;
@@ -60,10 +58,13 @@ public class Door : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Something Entered");
         if (other.GetComponentInParent<PlayerController>() != null && other.GetComponent<Transform>().gameObject.layer == 15)
         {
+            Debug.Log("Player Entered");
             if (Player.GetComponent<PlayerController>().keysCollected == DoorValue)
             {
+                Debug.Log("Door Opened");
                 this.GetComponent<SpriteRenderer>().sprite = DoorOpened;
             }
         }
