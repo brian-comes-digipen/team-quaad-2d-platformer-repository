@@ -15,7 +15,7 @@ public class Parallaxing : MonoBehaviour
     private void Awake()
     {
         //set up cam reference
-        cam = GameObject.Find("CM vcam1").transform;
+        cam = GameObject.Find("CinemachineBrain").transform;
     }
 
     // Start is called before the first frame update
