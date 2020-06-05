@@ -59,6 +59,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             health--;
             ani.SetBool("Hurt", true);
+            print("got hurt");
         }
            
 

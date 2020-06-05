@@ -121,13 +121,11 @@ public class PlayerController : MonoBehaviour
 
     private void AnimateSprite()
     {
-        if (vel.y == 0)
             ani.SetFloat("hSpeed", Mathf.Abs(vel.x));
-        else
-        {
+      
             ani.SetFloat("vVelocity", vel.y);
             ani.SetFloat("vSpeed", Mathf.Abs(vel.y));
-        }
+        
     }
 
     private void Crouch()
@@ -166,6 +164,7 @@ public class PlayerController : MonoBehaviour
                 jumpsLeft--;
             }
             else if (rb2D.velocity.y == 0 && rb2D.IsTouchingLayers())
+            //else if ((rb2D.velocity.y == 0 || col.onGround) && rb2D.IsTouchingLayers())
             {
                 if (CanJumpTwice)
                     jumpsLeft = 2;
